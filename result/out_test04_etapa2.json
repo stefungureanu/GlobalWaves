@@ -1,0 +1,27 @@
+[ { }, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 65,
+  "message" : "Please conduct a search before making a selection."
+}, { }, { }, { }, { }, {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 190,
+  "message" : "Search returned 0 results",
+  "results" : [ ]
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 280,
+  "message" : "The selected ID is too high."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 285,
+  "message" : "Please select a source before attempting to load."
+}, {
+  "command" : "prev",
+  "user" : "alice22",
+  "timestamp" : 1159,
+  "message" : "Please load a source before returning to the previous track."
+}, { }, { }, { }, { } ]

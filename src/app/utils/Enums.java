@@ -12,6 +12,11 @@ public class Enums { // diferite enumuri, le-am gurpat pe toate intr-un loc
         PRIVATE
     }
 
+    public enum Connectivity {
+        ONLINE,
+        OFFLINE
+    }
+
     public enum SearchType {
         SONG,
         PLAYLIST,

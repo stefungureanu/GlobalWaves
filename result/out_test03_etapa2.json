@@ -1,0 +1,33 @@
+[ {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 65,
+  "message" : "Search returned 0 results",
+  "results" : [ ]
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 70,
+  "message" : "The selected ID is too high."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 87,
+  "message" : "alice22 has changed status successfully."
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 105,
+  "message" : "alice22 is offline."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 105,
+  "message" : "Search returned 0 results",
+  "results" : [ ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 110,
+  "message" : "The selected ID is too high."
+} ]

@@ -1,0 +1,20 @@
+Starting audit...
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\user\Artist.java:4:19: Parameter username should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\user\Artist.java:4:36: Parameter age should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\user\Artist.java:4:45: Parameter city should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\user\Host.java:4:17: Parameter username should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\user\Host.java:4:34: Parameter age should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\user\Host.java:4:43: Parameter city should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:3:8: Unused import - app.audio.Files.Song. [UnusedImports]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:116:24: Parameter age should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:124:25: Parameter city should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:132:25: Parameter name should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:140:32: Parameter releaseYear should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:148:32: Parameter description should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:156:26: Parameter songs should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:164:25: Parameter date should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:172:26: Parameter price should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:180:29: Parameter episodes should be final. [FinalParameters]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\fileio\input\CommandInput.java:188:29: Parameter nextPage should be final. [FinalParameters]
+Audit done.
+Checkstyle ends with 17 errors.

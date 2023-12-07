@@ -1,5 +1,9 @@
 package fileio.input;
 
+import app.audio.Files.Song;
+
+import java.util.ArrayList;
+
 public final class CommandInput {
     private String command;
     private String username;
@@ -11,14 +15,25 @@ public final class CommandInput {
     private Integer playlistId; // pentru add/remove song
     private String playlistName; // pentru create playlist
     private Integer seed; // pentru shuffle
+    private int age;
+    private String city;
+    private String name;
+    private int releaseYear;
+    private String description;
+    private ArrayList<SongInput> songs;
+    private String date;
+    private int price;
+    private ArrayList<EpisodeInput> episodes;
+    private String nextPage;
 
     public CommandInput() {
     }
+
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
@@ -26,7 +41,7 @@ public final class CommandInput {
         return command;
     }
 
-    public void setCommand(String command) {
+    public void setCommand(final String command) {
         this.command = command;
     }
 
@@ -34,7 +49,7 @@ public final class CommandInput {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -42,7 +57,7 @@ public final class CommandInput {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(final Integer timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -50,7 +65,7 @@ public final class CommandInput {
         return filters;
     }
 
-    public void setFilters(FiltersInput filters) {
+    public void setFilters(final FiltersInput filters) {
         this.filters = filters;
     }
 
@@ -58,7 +73,7 @@ public final class CommandInput {
         return itemNumber;
     }
 
-    public void setItemNumber(Integer itemNumber) {
+    public void setItemNumber(final Integer itemNumber) {
         this.itemNumber = itemNumber;
     }
 
@@ -66,7 +81,7 @@ public final class CommandInput {
         return repeatMode;
     }
 
-    public void setRepeatMode(Integer repeatMode) {
+    public void setRepeatMode(final Integer repeatMode) {
         this.repeatMode = repeatMode;
     }
 
@@ -74,7 +89,7 @@ public final class CommandInput {
         return playlistId;
     }
 
-    public void setPlaylistId(Integer playlistId) {
+    public void setPlaylistId(final Integer playlistId) {
         this.playlistId = playlistId;
     }
 
@@ -82,7 +97,7 @@ public final class CommandInput {
         return playlistName;
     }
 
-    public void setPlaylistName(String playlistName) {
+    public void setPlaylistName(final String playlistName) {
         this.playlistName = playlistName;
     }
 
@@ -90,23 +105,103 @@ public final class CommandInput {
         return seed;
     }
 
-    public void setSeed(Integer seed) {
+    public void setSeed(final Integer seed) {
         this.seed = seed;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ArrayList<SongInput> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(ArrayList<SongInput> songs) {
+        this.songs = songs;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public ArrayList<EpisodeInput> getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(ArrayList<EpisodeInput> episodes) {
+        this.episodes = episodes;
+    }
+
+    public String getNextPage() {
+        return nextPage;
+    }
+
+    public void setNextPage(String nextPage) {
+        this.nextPage = nextPage;
     }
 
     @Override
     public String toString() {
-        return "CommandInput{" +
-                "command='" + command + '\'' +
-                ", username='" + username + '\'' +
-                ", timestamp=" + timestamp +
-                ", type='" + type + '\'' +
-                ", filters=" + filters +
-                ", itemNumber=" + itemNumber +
-                ", repeatMode=" + repeatMode +
-                ", playlistId=" + playlistId +
-                ", playlistName='" + playlistName + '\'' +
-                ", seed=" + seed +
-                '}';
+        return "CommandInput{"
+                + "command='" + command + '\''
+                + ", username='" + username + '\''
+                + ", timestamp=" + timestamp
+                + ", type='" + type + '\''
+                + ", filters=" + filters
+                + ", itemNumber=" + itemNumber
+                + ", repeatMode=" + repeatMode
+                + ", playlistId=" + playlistId
+                + ", playlistName='" + playlistName + '\''
+                + ", seed=" + seed
+                + '}';
     }
 }
