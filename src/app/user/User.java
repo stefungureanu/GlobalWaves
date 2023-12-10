@@ -11,6 +11,8 @@ import app.player.PlayerStats;
 import app.searchBar.Filters;
 import app.searchBar.SearchBar;
 import app.utils.Enums;
+import app.utils.visitor.PrintPage;
+import app.utils.visitor.Visitor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,7 +46,13 @@ public class User {
     // True for artists and hosts, false for normal users.
     @Getter
     @Setter
-    private boolean advancedUser = false;
+    private Enums.userType userType = Enums.userType.NORMAL;
+    @Getter
+    @Setter
+    private Enums.pageSelection pageType = Enums.pageSelection.HOME;
+    @Getter
+    @Setter
+    private User selectedUser = null;
 
     /**
      * Instantiates a new User.
@@ -65,6 +73,7 @@ public class User {
         lastSearched = false;
     }
 
+
     /**
      * Search array list.
      *
@@ -84,6 +93,26 @@ public class User {
             results.add(libraryEntry.getName());
         }
         return results;
+    }
+
+    /**
+     * Prints the current page
+     * @return The current page as string
+     */
+    public String printCurrentPage() {
+        Visitor currentPage = new PrintPage();
+        String message = new String();
+        if (connectionStatus == OFFLINE) {
+            message = username + "is offline.";
+            return message;
+        }
+        switch (pageType) {
+            case HOME -> message = currentPage.visit(this);
+            case LIKED -> message = currentPage.visit(this);
+            case ARTIST -> message = currentPage.visit((Artist) selectedUser);
+            case HOST -> message = currentPage.visit((Host) selectedUser);
+        }
+        return message;
     }
 
     /**
@@ -137,7 +166,7 @@ public class User {
      * @return the string
      */
     public String switchStatus() {
-        if (advancedUser) {
+        if (!userType.equals(Enums.userType.NORMAL)) {
             return username + " is not a normal user.";
         }
 

@@ -12,6 +12,19 @@ public class Enums { // diferite enumuri, le-am gurpat pe toate intr-un loc
         PRIVATE
     }
 
+    public enum userType {
+        NORMAL,
+        ARTIST,
+        HOST
+    }
+
+    public enum pageSelection {
+        HOME,
+        LIKED,
+        ARTIST,
+        HOST
+    }
+
     public enum Connectivity {
         ONLINE,
         OFFLINE

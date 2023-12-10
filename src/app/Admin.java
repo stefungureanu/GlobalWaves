@@ -4,11 +4,11 @@ import app.audio.Collections.Playlist;
 import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import app.audio.Files.Song;
+import app.user.Artist;
+import app.user.Host;
 import app.user.User;
-import fileio.input.EpisodeInput;
-import fileio.input.PodcastInput;
-import fileio.input.SongInput;
-import fileio.input.UserInput;
+import app.utils.Enums;
+import fileio.input.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,6 +25,32 @@ public final class Admin {
     private static final int LIMIT = 5;
 
     private Admin() {
+    }
+
+    /**
+     * Adds a new user.
+     *
+     * @param commandInput the command with user info
+     */
+    public static void addUser(final CommandInput commandInput) {
+        switch (commandInput.getType()) {
+            case "user":
+                User newUser = new User(commandInput.getUsername(), commandInput.getAge(),
+                        commandInput.getCity());
+                users.add(newUser);
+                break;
+            case "artist":
+                Artist newArtist = new Artist(commandInput.getUsername(), commandInput.getAge(),
+                        commandInput.getCity());
+                users.add(newArtist);
+                break;
+            case "host":
+                Host newHost = new Host(commandInput.getUsername(), commandInput.getAge(),
+                        commandInput.getCity());
+                users.add(newHost);
+                break;
+            default:
+        }
     }
 
     /**
@@ -104,6 +130,20 @@ public final class Admin {
     }
 
     /**
+     * Gets playlists.
+     *
+     * @return the playlists
+     */
+    public static List<Playlist> getAlbums() {
+        List<Playlist> albums = new ArrayList<>();
+        for (User user : users) {
+            if (user.getUserType().equals(Enums.userType.ARTIST))
+                albums.addAll(((Artist)user).getAlbums());
+        }
+        return albums;
+    }
+
+    /**
      * Gets user.
      *
      * @param username the username
@@ -175,6 +215,20 @@ public final class Admin {
             count++;
         }
         return topPlaylists;
+    }
+
+    /**
+     * Gets top 5 playlists.
+     *
+     * @return the top 5 playlists
+     */
+    public static List<String> getOnlineUsers() {
+        List<String> onlineUserList = new ArrayList<>();
+        for (User user : users) {
+            if (user.getConnectionStatus() == Enums.Connectivity.ONLINE)
+                onlineUserList.add(user.getUsername());
+        }
+        return onlineUserList;
     }
 
     /**

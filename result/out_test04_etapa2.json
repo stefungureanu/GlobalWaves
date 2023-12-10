@@ -1,27 +1,83 @@
-[ { }, {
-  "command" : "select",
-  "user" : "alice22",
-  "timestamp" : 65,
-  "message" : "Please conduct a search before making a selection."
-}, { }, { }, { }, { }, {
+[ {
+  "command" : "addUser",
+  "user" : "melodymaster",
+  "timestamp" : 5,
+  "message" : "The username melodymaster has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "rhythmrider",
+  "timestamp" : 10,
+  "message" : "The username rhythmrider has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "beatblazer",
+  "timestamp" : 15,
+  "message" : "The username beatblazer has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "harmonichero",
+  "timestamp" : 20,
+  "message" : "The username harmonichero has been added successfully."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 25,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "melodymaster", "rhythmrider", "beatblazer", "harmonichero" ]
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 35,
+  "message" : "melodymaster has added new album successfully."
+}, {
+  "command" : "showAlbums",
+  "user" : "beatblazer",
+  "timestamp" : 40,
+  "result" : [ ]
+}, {
   "command" : "search",
   "user" : "alice22",
-  "timestamp" : 190,
+  "timestamp" : 65,
   "message" : "Search returned 0 results",
   "results" : [ ]
 }, {
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 280,
+  "timestamp" : 70,
   "message" : "The selected ID is too high."
 }, {
-  "command" : "load",
+  "command" : "printCurrentPage",
   "user" : "alice22",
-  "timestamp" : 285,
-  "message" : "Please select a source before attempting to load."
+  "timestamp" : 75,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
 }, {
-  "command" : "prev",
+  "command" : "switchConnectionStatus",
   "user" : "alice22",
-  "timestamp" : 1159,
-  "message" : "Please load a source before returning to the previous track."
-}, { }, { }, { }, { } ]
+  "timestamp" : 87,
+  "message" : "alice22 has changed status successfully."
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "results" : [ ],
+  "timestamp" : 105,
+  "message" : "alice22 is offline."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 105,
+  "message" : "Search returned 0 results",
+  "results" : [ ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 110,
+  "message" : "The selected ID is too high."
+}, {
+  "command" : "printCurrentPage",
+  "user" : "alice22",
+  "timestamp" : 115,
+  "message" : "alice22 is offline."
+}, {
+  "command" : "printCurrentPage",
+  "user" : "bob35",
+  "timestamp" : 120,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
+} ]

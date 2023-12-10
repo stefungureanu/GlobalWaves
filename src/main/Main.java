@@ -74,9 +74,12 @@ public final class Main {
         LibraryInput library = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
                                                                + "library/library.json"),
                                                                LibraryInput.class);
+//        CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
+//                                                                  + filePath1),
+//                                                                  CommandInput[].class);
         CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
-                                                                  + filePath1),
-                                                                  CommandInput[].class);
+                        + "test03_etapa2.json"),
+                CommandInput[].class);
         ArrayNode outputs = objectMapper.createArrayNode();
 
         Admin.setUsers(library.getUsers());
@@ -113,6 +116,16 @@ public final class Main {
                 case "getTop5Playlists" -> outputs.add(CommandRunner.getTop5Playlists(command));
                 case "switchConnectionStatus" ->
                         outputs.add(CommandRunner.switchConnectionStatus(command));
+                case "getOnlineUsers" ->
+                        outputs.add(CommandRunner.getOnlineUsers(command));
+                case "addUser" ->
+                        outputs.add(CommandRunner.addUser(command));
+                case "addAlbum" ->
+                        outputs.add(CommandRunner.addAlbum(command));
+                case "showAlbums" ->
+                        outputs.add(CommandRunner.showAlbums(command));
+                case "printCurrentPage" ->
+                        outputs.add(CommandRunner.printCurrentPage(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

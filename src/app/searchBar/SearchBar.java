@@ -2,6 +2,8 @@ package app.searchBar;
 
 
 import app.Admin;
+import app.audio.Collections.Playlist;
+import app.audio.Files.Song;
 import app.audio.LibraryEntry;
 import lombok.Getter;
 
@@ -63,6 +65,12 @@ public final class SearchBar {
         switch (type) {
             case "song":
                 entries = new ArrayList<>(Admin.getSongs());
+                // Adding songs from albums.
+                for (Playlist album : Admin.getAlbums()) {
+                    for (Song song : album.getSongs()) {
+                        entries.add(song);
+                    }
+                }
 
                 if (filters.getName() != null) {
                     entries = filterByName(entries, filters.getName());

@@ -1,101 +1,83 @@
-[ { }, { }, { }, { }, { }, {
+[ {
+  "command" : "addUser",
+  "user" : "melodymaster",
+  "timestamp" : 5,
+  "message" : "The username melodymaster has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "rhythmrider",
+  "timestamp" : 10,
+  "message" : "The username rhythmrider has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "beatblazer",
+  "timestamp" : 15,
+  "message" : "The username beatblazer has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "harmonichero",
+  "timestamp" : 20,
+  "message" : "The username harmonichero has been added successfully."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 25,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "melodymaster", "rhythmrider", "beatblazer", "harmonichero" ]
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 35,
+  "message" : "melodymaster has added new album successfully."
+}, {
+  "command" : "showAlbums",
+  "user" : "beatblazer",
+  "timestamp" : 40,
+  "result" : [ ]
+}, {
   "command" : "search",
   "user" : "alice22",
-  "timestamp" : 335,
+  "timestamp" : 65,
   "message" : "Search returned 0 results",
   "results" : [ ]
 }, {
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 340,
+  "timestamp" : 70,
   "message" : "The selected ID is too high."
 }, {
-  "command" : "load",
+  "command" : "printCurrentPage",
   "user" : "alice22",
-  "timestamp" : 345,
-  "message" : "Please select a source before attempting to load."
+  "timestamp" : 75,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 87,
+  "message" : "alice22 has changed status successfully."
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "results" : [ ],
+  "timestamp" : 105,
+  "message" : "alice22 is offline."
 }, {
   "command" : "search",
   "user" : "bob35",
-  "timestamp" : 350,
+  "timestamp" : 105,
   "message" : "Search returned 0 results",
   "results" : [ ]
 }, {
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 355,
+  "timestamp" : 110,
   "message" : "The selected ID is too high."
 }, {
-  "command" : "follow",
+  "command" : "printCurrentPage",
+  "user" : "alice22",
+  "timestamp" : 115,
+  "message" : "alice22 is offline."
+}, {
+  "command" : "printCurrentPage",
   "user" : "bob35",
-  "timestamp" : 360,
-  "message" : "Please select a source before following or unfollowing."
-}, {
-  "command" : "search",
-  "user" : "bob35",
-  "timestamp" : 365,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
-}, {
-  "command" : "select",
-  "user" : "bob35",
-  "timestamp" : 370,
-  "message" : "The selected ID is too high."
-}, {
-  "command" : "load",
-  "user" : "bob35",
-  "timestamp" : 375,
-  "message" : "Please select a source before attempting to load."
-}, {
-  "command" : "like",
-  "user" : "bob35",
-  "timestamp" : 380,
-  "message" : "Please load a source before liking or unliking."
-}, { }, { }, { }, {
-  "command" : "search",
-  "user" : "carol19",
-  "timestamp" : 725,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
-}, {
-  "command" : "select",
-  "user" : "carol19",
-  "timestamp" : 730,
-  "message" : "The selected ID is too high."
-}, {
-  "command" : "follow",
-  "user" : "carol19",
-  "timestamp" : 735,
-  "message" : "Please select a source before following or unfollowing."
-}, {
-  "command" : "load",
-  "user" : "carol19",
-  "timestamp" : 740,
-  "message" : "Please select a source before attempting to load."
-}, {
-  "command" : "search",
-  "user" : "david27",
-  "timestamp" : 760,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
-}, {
-  "command" : "repeat",
-  "user" : "carol19",
-  "timestamp" : 965,
-  "message" : "Please load a source before setting the repeat status."
-}, {
-  "command" : "select",
-  "user" : "david27",
-  "timestamp" : 1225,
-  "message" : "The selected ID is too high."
-}, {
-  "command" : "repeat",
-  "user" : "carol19",
-  "timestamp" : 7200,
-  "message" : "Please load a source before setting the repeat status."
-}, {
-  "command" : "repeat",
-  "user" : "carol19",
-  "timestamp" : 7505,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 120,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
 } ]
