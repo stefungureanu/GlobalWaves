@@ -176,6 +176,34 @@ public final class Admin {
     }
 
     /**
+     * Gets all the users that are artists.
+     * @return The list containing all artists
+     */
+    public static List<User> getArtists() {
+        List<User> artists = new ArrayList<>();
+        for (User user : users) {
+            if (user.getUserType().equals(Enums.userType.ARTIST)) {
+                artists.add(user);
+            }
+        }
+        return artists;
+    }
+
+    /**
+     * Gets all the users that are hosts.
+     * @return The list containing all hosts
+     */
+    public static List<User> getHosts() {
+        List<User> hosts = new ArrayList<>();
+        for (User user : users) {
+            if (user.getUserType().equals(Enums.userType.HOST)) {
+                hosts.add(user);
+            }
+        }
+        return hosts;
+    }
+
+    /**
      * Gets top 5 songs.
      *
      * @return the top 5 songs

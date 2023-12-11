@@ -640,6 +640,72 @@ public final class CommandRunner {
     }
 
     /**
+     * Add event object node.
+     *
+     * @param commandInput the command input
+     * @return the object node
+     */
+    public static ObjectNode addEvent(final CommandInput commandInput) {
+        User user = Admin.getUser(commandInput.getUsername());
+        // PROVIZORIU
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        if (user == null) {
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", "The username " +
+                    commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        }
+        String message = new String();
+        if (!user.getUserType().equals(Enums.userType.ARTIST)) {
+            message = user.getUsername() + " is not an artist.";
+        } else {
+            message = ((Artist) user).addEvent(commandInput);
+        }
+
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        objectNode.put("message", message);
+
+        return objectNode;
+    }
+
+    /**
+     * Add merch object node.
+     *
+     * @param commandInput the command input
+     * @return the object node
+     */
+    public static ObjectNode addMerch(final CommandInput commandInput) {
+        User user = Admin.getUser(commandInput.getUsername());
+        // PROVIZORIU
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        if (user == null) {
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", "The username " +
+                    commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        }
+        String message = new String();
+        if (!user.getUserType().equals(Enums.userType.ARTIST)) {
+            message = user.getUsername() + " is not an artist.";
+        } else {
+            message = ((Artist) user).addMerch(commandInput);
+        }
+
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        objectNode.put("message", message);
+
+        return objectNode;
+    }
+
+    /**
      * Current page object node.
      *
      * @param commandInput the command input

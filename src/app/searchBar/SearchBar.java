@@ -5,6 +5,7 @@ import app.Admin;
 import app.audio.Collections.Playlist;
 import app.audio.Files.Song;
 import app.audio.LibraryEntry;
+import app.user.User;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -20,12 +21,14 @@ import static app.searchBar.FilterUtils.filterByOwner;
 import static app.searchBar.FilterUtils.filterByPlaylistVisibility;
 import static app.searchBar.FilterUtils.filterByReleaseYear;
 import static app.searchBar.FilterUtils.filterByTags;
+import static app.searchBar.FilterUtils.filterByUsername;
 
 /**
  * The type Search bar.
  */
 public final class SearchBar {
     private List<LibraryEntry> results;
+    private List<User> userResults;
     private final String user;
     private static final Integer MAX_RESULTS = 5;
     @Getter
@@ -34,6 +37,9 @@ public final class SearchBar {
     @Getter
     private LibraryEntry lastSelected;
 
+    @Getter
+    private User lastUserSelected;
+
     /**
      * Instantiates a new Search bar.
      *
@@ -41,6 +47,7 @@ public final class SearchBar {
      */
     public SearchBar(final String user) {
         this.results = new ArrayList<>();
+        this.userResults = new ArrayList<>();
         this.user = user;
     }
 
@@ -53,13 +60,13 @@ public final class SearchBar {
     }
 
     /**
-     * Search list.
+     * Search list for media.
      *
      * @param filters the filters
      * @param type    the type
      * @return the list
      */
-    public List<LibraryEntry> search(final Filters filters, final String type) {
+    public List<LibraryEntry> searchMedia(final Filters filters, final String type) {
         List<LibraryEntry> entries;
 
         switch (type) {
@@ -134,7 +141,6 @@ public final class SearchBar {
             default:
                 entries = new ArrayList<>();
         }
-
         while (entries.size() > MAX_RESULTS) {
             entries.remove(entries.size() - 1);
         }
@@ -142,6 +148,40 @@ public final class SearchBar {
         this.results = entries;
         this.lastSearchType = type;
         return this.results;
+    }
+
+    /**
+     * Search list for users (artists and hosts).
+     *
+     * @param filters the filters
+     * @param type    the type
+     * @return the list
+     */
+    public List<User> searchUser(final Filters filters, final String type) {
+        List<User> userEntries;
+
+        switch (type) {
+            case "artist":
+                userEntries = new ArrayList<>(Admin.getArtists());
+
+                userEntries = filterByUsername(userEntries, filters.getName());
+                break;
+            case "host":
+                userEntries = new ArrayList<>(Admin.getHosts());
+
+                userEntries = filterByUsername(userEntries, filters.getName());
+                break;
+            default:
+                userEntries = new ArrayList<>();
+        }
+
+        while (userEntries.size() > MAX_RESULTS) {
+            userEntries.remove(userEntries.size() - 1);
+        }
+
+        this.userResults = userEntries;
+        this.lastSearchType = type;
+        return this.userResults;
     }
 
     /**
@@ -160,6 +200,25 @@ public final class SearchBar {
             results.clear();
 
             return lastSelected;
+        }
+    }
+
+    /**
+     * Select user.
+     *
+     * @param itemNumber the item number
+     * @return the user
+     */
+    public User selectUser(final Integer itemNumber) {
+        if (this.userResults.size() < itemNumber) {
+            userResults.clear();
+
+            return null;
+        } else {
+            lastUserSelected =  this.userResults.get(itemNumber - 1);
+            userResults.clear();
+
+            return lastUserSelected;
         }
     }
 }

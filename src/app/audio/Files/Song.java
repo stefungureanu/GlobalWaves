@@ -41,6 +41,7 @@ public final class Song extends AudioFile {
         this.releaseYear = releaseYear;
         this.artist = artist;
         this.likes = 0;
+        this.interactions = 0;
     }
 
     @Override

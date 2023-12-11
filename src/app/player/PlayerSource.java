@@ -221,7 +221,10 @@ public class PlayerSource {
      * @param audioFile the audio file
      */
     public void setAudioFile(final AudioFile audioFile) {
+        if (this.audioFile != null) {
+            this.audioFile.decreaseInteraction();
+        }
         this.audioFile = audioFile;
+        audioFile.increaseInteraction();
     }
-
 }

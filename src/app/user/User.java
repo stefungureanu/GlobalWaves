@@ -41,7 +41,9 @@ public class User {
     private final Player player;
     private final SearchBar searchBar;
     private boolean lastSearched;
+    private boolean lastSearchedUser;
     @Getter
+    @Setter
     private Enums.Connectivity connectionStatus = ONLINE;
     // True for artists and hosts, false for normal users.
     @Getter
@@ -71,6 +73,7 @@ public class User {
         player = new Player();
         searchBar = new SearchBar(username);
         lastSearched = false;
+        lastSearchedUser = false;
     }
 
 
@@ -84,14 +87,24 @@ public class User {
     public ArrayList<String> search(final Filters filters, final String type) {
         searchBar.clearSelection();
         player.stop();
-
         lastSearched = true;
-        ArrayList<String> results = new ArrayList<>();
-        List<LibraryEntry> libraryEntries = searchBar.search(filters, type);
 
-        for (LibraryEntry libraryEntry : libraryEntries) {
-            results.add(libraryEntry.getName());
+        ArrayList<String> results = new ArrayList<>();
+        if (type.equals("artist") || type.equals("host")) {
+            lastSearchedUser = true;
+            List<User> userEntries = searchBar.searchUser(filters, type);
+
+            for (User user : userEntries) {
+                results.add(user.getUsername());
+            }
+        } else {
+            List<LibraryEntry> libraryEntries = searchBar.searchMedia(filters, type);
+
+            for (LibraryEntry libraryEntry : libraryEntries) {
+                results.add(libraryEntry.getName());
+            }
         }
+
         return results;
     }
 
@@ -122,10 +135,38 @@ public class User {
      * @return the string
      */
     public String select(final int itemNumber) {
+        String message = new String();
+        if (!lastSearchedUser) {
+            message = selectMedia(itemNumber);
+        } else {
+            message = selectUser(itemNumber);
+        }
+        return message;
+
+    }
+
+    private String selectUser(final int itemNumber) {
+        lastSearched = false;
+        lastSearchedUser = false;
+
+        selectedUser = searchBar.selectUser(itemNumber);
+
+        if (selectedUser == null) {
+            return "The selected ID is too high.";
+        }
+
+        if (selectedUser.getUserType().equals(Enums.userType.ARTIST)) {
+            pageType = Enums.pageSelection.ARTIST;
+        } else {
+            pageType = Enums.pageSelection.HOST;
+        }
+        return "Successfully selected %s".formatted(selectedUser.getUsername()) + "'s page.";
+    }
+
+    private String selectMedia(final int itemNumber) {
         if (!lastSearched) {
             return "Please conduct a search before making a selection.";
         }
-
         lastSearched = false;
 
         LibraryEntry selected = searchBar.select(itemNumber);

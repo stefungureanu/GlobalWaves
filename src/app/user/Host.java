@@ -6,5 +6,6 @@ public class Host extends User {
     public Host(String username, int age, String city) {
         super(username, age, city);
         super.setUserType(Enums.userType.HOST);
+        super.setConnectionStatus(Enums.Connectivity.OFFLINE);
     }
 }
