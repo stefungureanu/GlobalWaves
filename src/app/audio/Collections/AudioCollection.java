@@ -10,6 +10,8 @@ import lombok.Getter;
 @Getter
 public abstract class AudioCollection extends LibraryEntry {
     private final String owner;
+    @Getter
+    private Integer interactions = 0;
 
     /**
      * Instantiates a new Audio collection.
@@ -44,5 +46,13 @@ public abstract class AudioCollection extends LibraryEntry {
      */
     public boolean matchesOwner(final String user) {
         return this.getOwner().equals(user);
+    }
+
+    public void increaseInteractions() {
+        interactions++;
+    }
+
+    public void decreaseInteractions() {
+        interactions--;
     }
 }

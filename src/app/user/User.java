@@ -1,5 +1,6 @@
 package app.user;
 
+import app.Admin;
 import app.audio.Collections.AudioCollection;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.PlaylistOutput;
@@ -13,6 +14,7 @@ import app.searchBar.SearchBar;
 import app.utils.Enums;
 import app.utils.visitor.PrintPage;
 import app.utils.visitor.Visitor;
+import fileio.input.CommandInput;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -55,6 +57,8 @@ public class User {
     @Getter
     @Setter
     private User selectedUser = null;
+    @Getter
+    private Integer pageVisitors = 0;
 
     /**
      * Instantiates a new User.
@@ -74,6 +78,14 @@ public class User {
         searchBar = new SearchBar(username);
         lastSearched = false;
         lastSearchedUser = false;
+    }
+
+    protected void increasePageVisitors() {
+        pageVisitors++;
+    }
+
+    protected void decreasePageVisitors() {
+        pageVisitors--;
     }
 
 
@@ -129,6 +141,29 @@ public class User {
     }
 
     /**
+     * Changes the current page.
+     *
+     * @return The resulting message
+     */
+    public String changePage(final CommandInput commandInput) {
+        String message = username + " accessed " + commandInput.getNextPage() + " successfully.";
+        switch (commandInput.getNextPage()) {
+            case "Home":
+                pageType = Enums.pageSelection.HOME;
+                selectedUser = null;
+                break;
+            case "LikedContent":
+                pageType = Enums.pageSelection.LIKED;
+                selectedUser = null;
+                break;
+            default:
+                message = username + " is trying to access a non-existent page.";
+                break;
+        }
+        return message;
+    }
+
+    /**
      * Select string.
      *
      * @param itemNumber the item number
@@ -154,6 +189,8 @@ public class User {
         if (selectedUser == null) {
             return "The selected ID is too high.";
         }
+
+        selectedUser.increasePageVisitors();
 
         if (selectedUser.getUserType().equals(Enums.userType.ARTIST)) {
             pageType = Enums.pageSelection.ARTIST;
@@ -579,6 +616,42 @@ public class User {
     public void simulateTime(final int time) {
         if (connectionStatus == ONLINE) {
             player.simulatePlayer(time);
+        }
+    }
+
+    /**
+     * Check if no one is interacting with the user.
+     *
+     * @return True if it can be deleted, false otherwise
+     */
+    public boolean safeDelete() {
+        for (Playlist playlist : playlists) {
+            if (playlist.getInteractions() != 0)
+                return false;
+        }
+        return true;
+    }
+
+    public void dislikeAll() {
+        for (Song song : likedSongs) {
+            song.dislike();
+        }
+    }
+
+    public void unfollowAll() {
+        for (Playlist playlist : followedPlaylists) {
+            playlist.decreaseFollowers();
+        }
+    }
+
+    public void removePlaylists() {
+        for (User user : Admin.getNormalUsers()) {
+            if (!user.getUsername().equals(this.username)) {
+                // Get the user's followed playlists
+                ArrayList<Playlist> userFollowedPlaylists = user.getFollowedPlaylists();
+                // Iterate through the followed playlists and remove the ones created by the current user (this)
+                userFollowedPlaylists.removeIf(playlist -> playlist.getOwner().equals(this.getUsername()));
+            }
         }
     }
 }

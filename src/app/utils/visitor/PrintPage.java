@@ -1,14 +1,18 @@
 package app.utils.visitor;
 
 import app.audio.Collections.Playlist;
+import app.audio.Collections.Podcast;
+import app.audio.Files.Episode;
 import app.audio.Files.Song;
 import app.user.Artist;
 import app.user.Host;
 import app.user.User;
+import app.user.content.Announcement;
 import app.user.content.Event;
 import app.user.content.Merch;
 import app.utils.Enums;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PrintPage implements Visitor {
@@ -77,10 +81,64 @@ public class PrintPage implements Visitor {
         }
         return eventDetails.toString();
     }
+
     @Override
     public String visit(Host host) {
-        return "aaa";
+        StringBuilder representation = new StringBuilder("Podcasts:\n\t[");
+        representation.append(getPodcastDetails(host)); // Display podcast details
+        representation.append("]\n\nAnnouncements:\n\t[");
+        representation.append(getAnnouncementDetails(host)); // Display announcement details
+        representation.append("]");
+        return representation.toString();
     }
+
+    // Helper method to get the details of podcasts
+    private String getPodcastDetails(Host host) {
+        StringBuilder podcastDetails = new StringBuilder();
+        int count = 0;
+        for (Podcast podcast : host.getPodcasts()) {
+            if (count > 0) {
+                podcastDetails.append(", ");
+            }
+            podcastDetails.append(podcast.getName()).append(":\n\t[");
+            podcastDetails.append(getEpisodeDetails(podcast.getEpisodes())); // Display episode details
+            //podcastDetails.append("]");
+            count++;
+        }
+        return podcastDetails.toString();
+    }
+
+    // Helper method to get the details of episodes
+    private String getEpisodeDetails(List<Episode> episodes) {
+        StringBuilder episodeDetails = new StringBuilder();
+        int count = 0;
+        for (Episode episode : episodes) {
+            if (count > 0) {
+                episodeDetails.append(", ");
+            }
+            episodeDetails.append(episode.getName()).append(" - ").append(episode.getDescription());
+            count++;
+        }
+        episodeDetails.append("]\n");
+        return episodeDetails.toString();
+    }
+
+    // Helper method to get the details of announcements
+    private String getAnnouncementDetails(Host host) {
+        StringBuilder announcementDetails = new StringBuilder();
+        int count = 0;
+        for (Announcement announcement : host.getAnnouncements()) {
+            if (count > 0) {
+                announcementDetails.append(", ");
+            }
+            announcementDetails.append(announcement.getName()).append(":\n\t").append(announcement.getDescription()).append("\n");
+            count++;
+        }
+        return announcementDetails.toString();
+    }
+
+
+
     @Override
     public String visit(User user) {
         if (user.getPageType() == Enums.pageSelection.HOME) {
@@ -91,9 +149,9 @@ public class PrintPage implements Visitor {
             representation.append("]");
             return representation.toString();
         } else {
-            StringBuilder representation = new StringBuilder("Liked Songs:\n\t[");
+            StringBuilder representation = new StringBuilder("Liked songs:\n\t[");
             representation.append(getLikedSongsDetails(user)); // Display details of liked songs
-            representation.append("]\n\nFollowed Playlists:\n\t[");
+            representation.append("]\n\nFollowed playlists:\n\t[");
             representation.append(getFollowedPlaylistsDetails(user)); // Display details of followed playlists
             representation.append("]");
             return representation.toString();

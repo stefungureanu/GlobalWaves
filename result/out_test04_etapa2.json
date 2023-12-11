@@ -19,110 +19,141 @@
   "timestamp" : 20,
   "message" : "The username harmonichero has been added successfully."
 }, {
-  "command" : "getOnlineUsers",
+  "command" : "addUser",
+  "user" : "melodicmind42",
   "timestamp" : 25,
-  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
+  "message" : "The username melodicmind42 has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "rhythmicrider58",
+  "timestamp" : 30,
+  "message" : "The username rhythmicrider58 has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "harmonyhunter73",
+  "timestamp" : 35,
+  "message" : "The username harmonyhunter73 has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "irene33",
+  "timestamp" : 40,
+  "message" : "The username irene33 is already taken."
+}, {
+  "command" : "getAllUsers",
+  "timestamp" : 45,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "melodicmind42", "rhythmicrider58", "harmonyhunter73", "melodymaster", "rhythmrider", "beatblazer", "harmonichero" ]
 }, {
   "command" : "addAlbum",
-  "user" : "melodymaster",
-  "timestamp" : 35,
-  "message" : "melodymaster has added new album successfully."
-}, {
-  "command" : "showAlbums",
-  "user" : "beatblazer",
-  "timestamp" : 40,
-  "result" : [ ]
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
-  "timestamp" : 45,
-  "message" : "melodymaster has added new event successfully."
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
+  "user" : "rhythmrider",
   "timestamp" : 50,
-  "message" : "melodymaster has added new event successfully."
+  "message" : "rhythmrider has added new album successfully."
 }, {
-  "command" : "addEvent",
-  "user" : "alice23",
+  "command" : "addAlbum",
+  "user" : "beatblazer",
   "timestamp" : 55,
-  "message" : "The username alice23 doesn't exist."
-}, {
-  "command" : "addEvent",
-  "user" : "bob35",
-  "timestamp" : 60,
-  "message" : "bob35 is not an artist."
+  "message" : "beatblazer has added new album successfully."
 }, {
   "command" : "search",
+  "user" : "melodicmind42",
+  "timestamp" : 60,
+  "message" : "Search returned 3 results",
+  "results" : [ "Radio Ga Ga", "Rhythm Rise", "Rhythmic Revolution" ]
+}, {
+  "command" : "select",
   "user" : "alice22",
   "timestamp" : 65,
-  "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "message" : "Please conduct a search before making a selection."
 }, {
   "command" : "select",
-  "user" : "alice22",
+  "user" : "melodicmind42",
   "timestamp" : 70,
-  "message" : "Successfully selected melodymaster's page."
+  "message" : "Successfully selected Rhythmic Revolution."
+}, {
+  "command" : "load",
+  "user" : "melodicmind42",
+  "timestamp" : 75,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "status",
+  "user" : "melodicmind42",
+  "timestamp" : 90,
+  "stats" : {
+    "name" : "Rhythmic Revolution",
+    "remainedTime" : 185,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "like",
+  "user" : "melodicmind42",
+  "timestamp" : 120,
+  "message" : "Like registered successfully."
 }, {
   "command" : "printCurrentPage",
-  "user" : "alice22",
-  "timestamp" : 75,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
+  "user" : "melodicmind42",
+  "timestamp" : 135,
+  "message" : "Liked songs:\n\t[Rhythmic Revolution]\n\nFollowed playlists:\n\t[]"
 }, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 80,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 85,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "switchConnectionStatus",
-  "user" : "alice22",
-  "timestamp" : 87,
-  "message" : "alice22 has changed status successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 90,
-  "message" : "Price for merchandise can not be negative."
-}, {
-  "command" : "addMerch",
-  "user" : "Melodic Hoodie",
-  "timestamp" : 95,
-  "message" : "The username Melodic Hoodie doesn't exist."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 100,
-  "message" : "melodymaster has merchandise with the same name."
+  "command" : "deleteUser",
+  "user" : "beatblazer",
+  "timestamp" : 150,
+  "message" : "beatblazer can't be deleted."
 }, {
   "command" : "search",
   "user" : "alice22",
-  "results" : [ ],
-  "timestamp" : 105,
-  "message" : "alice22 is offline."
-}, {
-  "command" : "search",
-  "user" : "bob35",
-  "timestamp" : 105,
+  "timestamp" : 190,
   "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "results" : [ "Beat Odyssey" ]
 }, {
   "command" : "select",
-  "user" : "bob35",
-  "timestamp" : 110,
-  "message" : "Successfully selected melodymaster's page."
-}, {
-  "command" : "printCurrentPage",
   "user" : "alice22",
-  "timestamp" : 115,
-  "message" : "alice22 is offline."
+  "timestamp" : 280,
+  "message" : "Successfully selected Beat Odyssey."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 285,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "deleteUser",
+  "user" : "beatblazer",
+  "timestamp" : 1158,
+  "message" : "beatblazer can't be deleted."
+}, {
+  "command" : "prev",
+  "user" : "alice22",
+  "timestamp" : 1159,
+  "message" : "Returned to previous track successfully. The current track is Melodic Motion."
+}, {
+  "command" : "deleteUser",
+  "user" : "beatblazer",
+  "timestamp" : 1380,
+  "message" : "beatblazer was successfully deleted."
+}, {
+  "command" : "search",
+  "user" : "melodicmind42",
+  "timestamp" : 1385,
+  "message" : "Search returned 1 results",
+  "results" : [ "Rapid Rhythms" ]
+}, {
+  "command" : "select",
+  "user" : "melodicmind42",
+  "timestamp" : 1390,
+  "message" : "Successfully selected Rapid Rhythms."
+}, {
+  "command" : "load",
+  "user" : "melodicmind42",
+  "timestamp" : 1440,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "like",
+  "user" : "melodicmind42",
+  "timestamp" : 1455,
+  "message" : "Like registered successfully."
 }, {
   "command" : "printCurrentPage",
-  "user" : "bob35",
-  "timestamp" : 120,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[Harmonic T-Shirt - 25:\n\tLimited edition T-shirt featuring unique harmonic designs., Echoes Cap - 20:\n\tStylish cap with the 'Echoes of Harmony' album artwork.]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
+  "user" : "melodicmind42",
+  "timestamp" : 1480,
+  "message" : "Liked songs:\n\t[Rapid Rhythms]\n\nFollowed playlists:\n\t[]"
 } ]

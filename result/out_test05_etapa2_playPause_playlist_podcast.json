@@ -1,128 +1,281 @@
 [ {
-  "command" : "addUser",
-  "user" : "melodymaster",
-  "timestamp" : 5,
-  "message" : "The username melodymaster has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "rhythmrider",
+  "command" : "search",
+  "user" : "alice22",
   "timestamp" : 10,
-  "message" : "The username rhythmrider has been added successfully."
+  "message" : "Search returned 1 results",
+  "results" : [ "TED Radio Hour" ]
 }, {
-  "command" : "addUser",
-  "user" : "beatblazer",
+  "command" : "select",
+  "user" : "alice22",
   "timestamp" : 15,
-  "message" : "The username beatblazer has been added successfully."
+  "message" : "Successfully selected TED Radio Hour."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 20,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 49,
+  "stats" : {
+    "name" : "The Power of Design",
+    "remainedTime" : 3075,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
 }, {
   "command" : "addUser",
-  "user" : "harmonichero",
-  "timestamp" : 20,
-  "message" : "The username harmonichero has been added successfully."
-}, {
-  "command" : "getOnlineUsers",
-  "timestamp" : 25,
-  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
-}, {
-  "command" : "addAlbum",
-  "user" : "melodymaster",
-  "timestamp" : 35,
-  "message" : "melodymaster has added new album successfully."
-}, {
-  "command" : "showAlbums",
-  "user" : "beatblazer",
-  "timestamp" : 40,
-  "result" : [ ]
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
-  "timestamp" : 45,
-  "message" : "melodymaster has added new event successfully."
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
+  "user" : "soundseeker",
   "timestamp" : 50,
-  "message" : "melodymaster has added new event successfully."
+  "message" : "The username soundseeker has been added successfully."
 }, {
-  "command" : "addEvent",
-  "user" : "alice23",
-  "timestamp" : 55,
-  "message" : "The username alice23 doesn't exist."
+  "command" : "addPodcast",
+  "user" : "soundseeker",
+  "timestamp" : 51,
+  "message" : "soundseeker has added new podcast successfully."
 }, {
-  "command" : "addEvent",
-  "user" : "bob35",
-  "timestamp" : 60,
-  "message" : "bob35 is not an artist."
+  "command" : "addPodcast",
+  "user" : "alice22",
+  "timestamp" : 52,
+  "message" : "alice22 is not a host."
+}, {
+  "command" : "addPodcast",
+  "user" : "soundseeker",
+  "timestamp" : 53,
+  "message" : "soundseeker has added new podcast successfully."
+}, {
+  "command" : "addPodcast",
+  "user" : "soundseeker",
+  "timestamp" : 53,
+  "message" : "soundseeker has another podcast with the same name."
 }, {
   "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 55,
+  "message" : "Search returned 1 results",
+  "results" : [ "soundseeker" ]
+}, {
+  "command" : "addAnnouncement",
+  "user" : "soundseeker",
+  "timestamp" : 56,
+  "message" : "soundseeker has successfully added new announcement."
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 57,
+  "message" : "Successfully selected soundseeker's page."
+}, {
+  "command" : "printCurrentPage",
+  "user" : "alice22",
+  "timestamp" : 58,
+  "message" : "Podcasts:\n\t[Auditory Adventures:\n\t[Exploring Sonic Landscapes - Journey through the world's most unique auditory experiences., The Future of Music Technology - A look into the innovations shaping the future of music production and listening., Cultural Beats - An exploration of how different cultures influence music genres.]\n, Harmony & History:\n\t[The Roots of Blues - Tracing the origins and evolution of blues music., Classical Music's Modern Impact - Discussing how classical music continues to influence contemporary artists., Jazz Journeys - Exploring the rich history and vibrant present of jazz music., The Folk Revival - Examining the resurgence of folk music in modern times.]\n]\n\nAnnouncements:\n\t[Announcement1:\n\tPrimul anunt adaugat!\n]"
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 60,
+  "message" : "Search returned 1 results",
+  "results" : [ "TED Radio Hour" ]
+}, {
+  "command" : "select",
   "user" : "alice22",
   "timestamp" : 65,
-  "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "message" : "Successfully selected TED Radio Hour."
 }, {
-  "command" : "select",
+  "command" : "load",
   "user" : "alice22",
   "timestamp" : 70,
-  "message" : "Successfully selected melodymaster's page."
+  "message" : "Playback loaded successfully."
 }, {
-  "command" : "printCurrentPage",
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 73,
+  "stats" : {
+    "name" : "The Power of Design",
+    "remainedTime" : 3066,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "search",
   "user" : "alice22",
   "timestamp" : 75,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 80,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 85,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "switchConnectionStatus",
-  "user" : "alice22",
-  "timestamp" : 87,
-  "message" : "alice22 has changed status successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 90,
-  "message" : "Price for merchandise can not be negative."
-}, {
-  "command" : "addMerch",
-  "user" : "Melodic Hoodie",
-  "timestamp" : 95,
-  "message" : "The username Melodic Hoodie doesn't exist."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 100,
-  "message" : "melodymaster has merchandise with the same name."
-}, {
-  "command" : "search",
-  "user" : "alice22",
-  "results" : [ ],
-  "timestamp" : 105,
-  "message" : "alice22 is offline."
-}, {
-  "command" : "search",
-  "user" : "bob35",
-  "timestamp" : 105,
   "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "results" : [ "Auditory Adventures" ]
 }, {
   "command" : "select",
-  "user" : "bob35",
-  "timestamp" : 110,
-  "message" : "Successfully selected melodymaster's page."
+  "user" : "alice22",
+  "timestamp" : 80,
+  "message" : "Successfully selected Auditory Adventures."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 85,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 86,
+  "stats" : {
+    "name" : "Exploring Sonic Landscapes",
+    "remainedTime" : 2699,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "playPause",
+  "user" : "alice22",
+  "timestamp" : 3200,
+  "message" : "Playback paused successfully."
+}, {
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 3201,
+  "stats" : {
+    "name" : "The Future of Music Technology",
+    "remainedTime" : 2785,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : true
+  }
+}, {
+  "command" : "createPlaylist",
+  "user" : "alice22",
+  "timestamp" : 3210,
+  "message" : "Playlist created successfully."
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 3215,
+  "message" : "Search returned 2 results",
+  "results" : [ "Freedom", "Freedom" ]
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 3220,
+  "message" : "Successfully selected Freedom."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 3225,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "addAnnouncement",
+  "user" : "soundseeker",
+  "timestamp" : 3226,
+  "message" : "soundseeker has successfully added new announcement."
+}, {
+  "command" : "addRemoveInPlaylist",
+  "user" : "alice22",
+  "timestamp" : 3230,
+  "message" : "Successfully added to playlist."
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 3235,
+  "message" : "Search returned 1 results",
+  "results" : [ "Happier" ]
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 3240,
+  "message" : "Successfully selected Happier."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 3245,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "removeAnnouncement",
+  "user" : "soundseeker",
+  "timestamp" : 3246,
+  "message" : "soundseeker has no announcement with the given name."
+}, {
+  "command" : "addUser",
+  "user" : "magichost",
+  "timestamp" : 3247,
+  "message" : "The username magichost has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "magichost",
+  "timestamp" : 3247,
+  "message" : "The username magichost is already taken."
+}, {
+  "command" : "showPodcasts",
+  "user" : "soundseeker",
+  "timestamp" : 3250,
+  "result" : [ {
+    "name" : "Auditory Adventures",
+    "episodes" : [ "Exploring Sonic Landscapes", "The Future of Music Technology", "Cultural Beats" ]
+  }, {
+    "name" : "Harmony & History",
+    "episodes" : [ "The Roots of Blues", "Classical Music's Modern Impact", "Jazz Journeys", "The Folk Revival" ]
+  } ]
+}, {
+  "command" : "addRemoveInPlaylist",
+  "user" : "alice22",
+  "timestamp" : 3250,
+  "message" : "Successfully added to playlist."
+}, {
+  "command" : "removeAnnouncement",
+  "user" : "soundseeker",
+  "timestamp" : 3251,
+  "message" : "soundseeker has successfully deleted the announcement."
+}, {
+  "command" : "search",
+  "user" : "alice22",
+  "timestamp" : 3255,
+  "message" : "Search returned 1 results",
+  "results" : [ "2010 hits" ]
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 3260,
+  "message" : "Successfully selected 2010 hits."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 3265,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 3270,
+  "stats" : {
+    "name" : "Freedom",
+    "remainedTime" : 173,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
 }, {
   "command" : "printCurrentPage",
   "user" : "alice22",
-  "timestamp" : 115,
-  "message" : "alice22 is offline."
+  "timestamp" : 3275,
+  "message" : "Podcasts:\n\t[Auditory Adventures:\n\t[Exploring Sonic Landscapes - Journey through the world's most unique auditory experiences., The Future of Music Technology - A look into the innovations shaping the future of music production and listening., Cultural Beats - An exploration of how different cultures influence music genres.]\n, Harmony & History:\n\t[The Roots of Blues - Tracing the origins and evolution of blues music., Classical Music's Modern Impact - Discussing how classical music continues to influence contemporary artists., Jazz Journeys - Exploring the rich history and vibrant present of jazz music., The Folk Revival - Examining the resurgence of folk music in modern times.]\n]\n\nAnnouncements:\n\t[Announcement2:\n\tAl doilea anunt adaugat!\n]"
 }, {
-  "command" : "printCurrentPage",
-  "user" : "bob35",
-  "timestamp" : 120,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[Harmonic T-Shirt - 25:\n\tLimited edition T-shirt featuring unique harmonic designs., Echoes Cap - 20:\n\tStylish cap with the 'Echoes of Harmony' album artwork.]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 3448,
+  "stats" : {
+    "name" : "Happier",
+    "remainedTime" : 202,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 4000,
+  "stats" : {
+    "name" : "",
+    "remainedTime" : 0,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : true
+  }
 } ]

@@ -54,6 +54,51 @@ public final class Admin {
     }
 
     /**
+     * Deletes a user.
+     *
+     * @param user the user requesting deletion
+     */
+    public static String deleteUser(final User user) {
+        String message = user.getUsername() + " can't be deleted.";
+        boolean deleted = false;
+        switch (user.getUserType()) {
+            case NORMAL:
+                if (user.safeDelete()) {
+                    deleted = true;
+                    Admin.removeUserData(user);
+                    users.remove(user);
+                }
+                break;
+            case ARTIST:
+                if (user.safeDelete()) {
+                    deleted = true;
+                    Admin.removeUserData((Artist) user);
+                    users.remove(user);
+                }
+                break;
+            case HOST:
+                break;
+            default:
+        }
+        if (deleted) {
+            message = user.getUsername() + " was successfully deleted.";
+        }
+        return message;
+    }
+
+    private static void removeUserData(final Artist artist) {
+        artist.removeLikes();
+        artist.removeFollows();
+        artist.removePlaylistAdds();
+    }
+
+    private static void removeUserData(final User user) {
+        user.dislikeAll();
+        user.unfollowAll();
+        user.removePlaylists();
+    }
+
+    /**
      * Sets users.
      *
      * @param userInputList the user input list
@@ -246,9 +291,9 @@ public final class Admin {
     }
 
     /**
-     * Gets top 5 playlists.
+     * Gets online users.
      *
-     * @return the top 5 playlists
+     * @return the online users
      */
     public static List<String> getOnlineUsers() {
         List<String> onlineUserList = new ArrayList<>();
@@ -257,6 +302,47 @@ public final class Admin {
                 onlineUserList.add(user.getUsername());
         }
         return onlineUserList;
+    }
+
+    /**
+     * Gets normal users.
+     *
+     * @return the normal users
+     */
+    public static List<User> getNormalUsers() {
+        List<User> normalUserList = new ArrayList<>();
+        for (User user : users) {
+            if (user.getUserType() == Enums.userType.NORMAL)
+                normalUserList.add(user);
+        }
+        return normalUserList;
+    }
+
+    /**
+     * Gets top 5 playlists.
+     *
+     * @return the top 5 playlists
+     */
+    public static List<String> getAllUsers() {
+        List<String> allUsers = new ArrayList<>();
+        // Normal users
+        for (User user : users) {
+            if (user.getUserType() == Enums.userType.NORMAL)
+                allUsers.add(user.getUsername());
+        }
+
+        // Artists
+        for (User user : users) {
+            if (user.getUserType() == Enums.userType.ARTIST)
+                allUsers.add(user.getUsername());
+        }
+
+        // Hosts
+        for (User user : users) {
+            if (user.getUserType() == Enums.userType.HOST)
+                allUsers.add(user.getUsername());
+        }
+        return allUsers;
     }
 
     /**

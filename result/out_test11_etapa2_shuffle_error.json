@@ -1,128 +1,262 @@
 [ {
-  "command" : "addUser",
-  "user" : "melodymaster",
-  "timestamp" : 5,
-  "message" : "The username melodymaster has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "rhythmrider",
-  "timestamp" : 10,
-  "message" : "The username rhythmrider has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "beatblazer",
-  "timestamp" : 15,
-  "message" : "The username beatblazer has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "harmonichero",
-  "timestamp" : 20,
-  "message" : "The username harmonichero has been added successfully."
-}, {
-  "command" : "getOnlineUsers",
-  "timestamp" : 25,
-  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
-}, {
-  "command" : "addAlbum",
-  "user" : "melodymaster",
-  "timestamp" : 35,
-  "message" : "melodymaster has added new album successfully."
-}, {
-  "command" : "showAlbums",
-  "user" : "beatblazer",
-  "timestamp" : 40,
-  "result" : [ ]
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
-  "timestamp" : 45,
-  "message" : "melodymaster has added new event successfully."
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
+  "command" : "createPlaylist",
+  "user" : "bob35",
   "timestamp" : 50,
-  "message" : "melodymaster has added new event successfully."
-}, {
-  "command" : "addEvent",
-  "user" : "alice23",
-  "timestamp" : 55,
-  "message" : "The username alice23 doesn't exist."
-}, {
-  "command" : "addEvent",
-  "user" : "bob35",
-  "timestamp" : 60,
-  "message" : "bob35 is not an artist."
+  "message" : "Playlist created successfully."
 }, {
   "command" : "search",
-  "user" : "alice22",
-  "timestamp" : 65,
-  "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
-}, {
-  "command" : "select",
-  "user" : "alice22",
-  "timestamp" : 70,
-  "message" : "Successfully selected melodymaster's page."
-}, {
-  "command" : "printCurrentPage",
-  "user" : "alice22",
-  "timestamp" : 75,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 80,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 85,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "switchConnectionStatus",
-  "user" : "alice22",
-  "timestamp" : 87,
-  "message" : "alice22 has changed status successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 90,
-  "message" : "Price for merchandise can not be negative."
-}, {
-  "command" : "addMerch",
-  "user" : "Melodic Hoodie",
-  "timestamp" : 95,
-  "message" : "The username Melodic Hoodie doesn't exist."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
+  "user" : "bob35",
   "timestamp" : 100,
-  "message" : "melodymaster has merchandise with the same name."
-}, {
-  "command" : "search",
-  "user" : "alice22",
-  "results" : [ ],
-  "timestamp" : 105,
-  "message" : "alice22 is offline."
-}, {
-  "command" : "search",
-  "user" : "bob35",
-  "timestamp" : 105,
   "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "results" : [ "TED Talks Daily" ]
 }, {
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 110,
-  "message" : "Successfully selected melodymaster's page."
+  "message" : "Successfully selected TED Talks Daily."
 }, {
-  "command" : "printCurrentPage",
-  "user" : "alice22",
+  "command" : "load",
+  "user" : "bob35",
   "timestamp" : 115,
-  "message" : "alice22 is offline."
+  "message" : "Playback loaded successfully."
 }, {
-  "command" : "printCurrentPage",
+  "command" : "shuffle",
   "user" : "bob35",
   "timestamp" : 120,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[Harmonic T-Shirt - 25:\n\tLimited edition T-shirt featuring unique harmonic designs., Echoes Cap - 20:\n\tStylish cap with the 'Echoes of Harmony' album artwork.]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
+  "message" : "The loaded source is not a playlist."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 200,
+  "message" : "Search returned 1 results",
+  "results" : [ "Blank Space" ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 210,
+  "message" : "Successfully selected Blank Space."
+}, {
+  "command" : "load",
+  "user" : "bob35",
+  "timestamp" : 213,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "addRemoveInPlaylist",
+  "user" : "bob35",
+  "timestamp" : 215,
+  "message" : "Successfully added to playlist."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 250,
+  "message" : "Search returned 1 results",
+  "results" : [ "Whole Lotta Love" ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 260,
+  "message" : "Successfully selected Whole Lotta Love."
+}, {
+  "command" : "load",
+  "user" : "bob35",
+  "timestamp" : 263,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "addRemoveInPlaylist",
+  "user" : "bob35",
+  "timestamp" : 265,
+  "message" : "Successfully added to playlist."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 400,
+  "message" : "Search returned 1 results",
+  "results" : [ "I Don't Wanna Live Forever" ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 410,
+  "message" : "Successfully selected I Don't Wanna Live Forever."
+}, {
+  "command" : "load",
+  "user" : "bob35",
+  "timestamp" : 415,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "shuffle",
+  "user" : "bob35",
+  "timestamp" : 420,
+  "message" : "The loaded source is not a playlist."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 500,
+  "message" : "Search returned 1 results",
+  "results" : [ "Kings Dead" ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 510,
+  "message" : "Successfully selected Kings Dead."
+}, {
+  "command" : "load",
+  "user" : "bob35",
+  "timestamp" : 513,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "addRemoveInPlaylist",
+  "user" : "bob35",
+  "timestamp" : 515,
+  "message" : "Successfully added to playlist."
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 550,
+  "message" : "Search returned 1 results",
+  "results" : [ "Thinking Out Loud" ]
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 560,
+  "message" : "Successfully selected Thinking Out Loud."
+}, {
+  "command" : "load",
+  "user" : "bob35",
+  "timestamp" : 563,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "addRemoveInPlaylist",
+  "user" : "bob35",
+  "timestamp" : 565,
+  "message" : "Successfully added to playlist."
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3100,
+  "stats" : {
+    "name" : "",
+    "remainedTime" : 0,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : true
+  }
+}, {
+  "command" : "search",
+  "user" : "bob35",
+  "timestamp" : 3110,
+  "message" : "Search returned 1 results",
+  "results" : [ "Colaj" ]
+}, {
+  "command" : "shuffle",
+  "user" : "bob35",
+  "timestamp" : 3120,
+  "message" : "Please load a source before using the shuffle function."
+}, {
+  "command" : "select",
+  "user" : "bob35",
+  "timestamp" : 3130,
+  "message" : "Successfully selected Colaj."
+}, {
+  "command" : "load",
+  "user" : "bob35",
+  "timestamp" : 3140,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3150,
+  "stats" : {
+    "name" : "Blank Space",
+    "remainedTime" : 221,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3200,
+  "stats" : {
+    "name" : "Blank Space",
+    "remainedTime" : 171,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3250,
+  "stats" : {
+    "name" : "Blank Space",
+    "remainedTime" : 121,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
+}, {
+  "command" : "shuffle",
+  "user" : "bob35",
+  "timestamp" : 3260,
+  "message" : "Shuffle function activated successfully."
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3270,
+  "stats" : {
+    "name" : "Blank Space",
+    "remainedTime" : 101,
+    "repeat" : "No Repeat",
+    "shuffle" : true,
+    "paused" : false
+  }
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3320,
+  "stats" : {
+    "name" : "Blank Space",
+    "remainedTime" : 51,
+    "repeat" : "No Repeat",
+    "shuffle" : true,
+    "paused" : false
+  }
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3370,
+  "stats" : {
+    "name" : "Blank Space",
+    "remainedTime" : 1,
+    "repeat" : "No Repeat",
+    "shuffle" : true,
+    "paused" : false
+  }
+}, {
+  "command" : "shuffle",
+  "user" : "bob35",
+  "timestamp" : 3680,
+  "message" : "Please load a source before using the shuffle function."
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3690,
+  "stats" : {
+    "name" : "",
+    "remainedTime" : 0,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : true
+  }
+}, {
+  "command" : "status",
+  "user" : "bob35",
+  "timestamp" : 3740,
+  "stats" : {
+    "name" : "",
+    "remainedTime" : 0,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : true
+  }
 } ]

@@ -74,12 +74,13 @@ public final class Main {
         LibraryInput library = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
                                                                + "library/library.json"),
                                                                LibraryInput.class);
-//        CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
-//                                                                  + filePath1),
-//                                                                  CommandInput[].class);
         CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
-                        + "test03_etapa2.json"),
-                CommandInput[].class);
+                                                                  + filePath1),
+                                                                  CommandInput[].class);
+//        CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
+//                        + "test06_etapa2_repeat.json"),
+//                CommandInput[].class);
+
         ArrayNode outputs = objectMapper.createArrayNode();
 
         Admin.setUsers(library.getUsers());
@@ -130,6 +131,24 @@ public final class Main {
                         outputs.add(CommandRunner.addEvent(command));
                 case "addMerch" ->
                         outputs.add(CommandRunner.addMerch(command));
+                case "getAllUsers" ->
+                        outputs.add(CommandRunner.getAllUsers(command));
+                case "deleteUser" ->
+                        outputs.add(CommandRunner.deleteUser(command));
+                case "addPodcast" ->
+                        outputs.add(CommandRunner.addPodcast(command));
+                case "addAnnouncement" ->
+                        outputs.add(CommandRunner.addAnnouncement(command));
+                case "removeAnnouncement" ->
+                        outputs.add(CommandRunner.removeAnnouncement(command));
+                case "removeEvent" ->
+                        outputs.add(CommandRunner.removeEvent(command));
+                case "showPodcasts" ->
+                        outputs.add(CommandRunner.showPodcasts(command));
+                case "removeAlbum" ->
+                        outputs.add(CommandRunner.removeAlbum(command));
+                case "changePage" ->
+                        outputs.add(CommandRunner.changePage(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

@@ -34,7 +34,11 @@ public class PlayerSource {
      */
     public PlayerSource(final Enums.PlayerSourceType type, final AudioFile audioFile) {
         this.type = type;
+        if (this.audioFile != null) {
+            this.audioFile.decreaseInteraction();
+        }
         this.audioFile = audioFile;
+        this.audioFile.increaseInteraction();
         this.remainedDuration = audioFile.getDuration();
     }
 
@@ -46,8 +50,16 @@ public class PlayerSource {
      */
     public PlayerSource(final Enums.PlayerSourceType type, final AudioCollection audioCollection) {
         this.type = type;
+        if (this.audioCollection != null) {
+            this.audioCollection.decreaseInteractions();
+        }
         this.audioCollection = audioCollection;
+        this.audioCollection.increaseInteractions();
+        if (this.audioFile != null) {
+            this.audioFile.decreaseInteraction();
+        }
         this.audioFile = audioCollection.getTrackByIndex(0);
+        this.audioFile.increaseInteraction();
         this.index = 0;
         this.indexShuffled = 0;
         this.remainedDuration = audioFile.getDuration();
@@ -64,10 +76,18 @@ public class PlayerSource {
                         final AudioCollection audioCollection,
                         final PodcastBookmark bookmark) {
         this.type = type;
+        if (this.audioCollection != null) {
+            this.audioCollection.decreaseInteractions();
+        }
         this.audioCollection = audioCollection;
+        this.audioCollection.increaseInteractions();
         this.index = bookmark.getId();
         this.remainedDuration = bookmark.getTimestamp();
+        if (this.audioFile != null) {
+            this.audioFile.decreaseInteraction();
+        }
         this.audioFile = audioCollection.getTrackByIndex(index);
+        this.audioFile.increaseInteraction();
     }
 
     /**
@@ -225,6 +245,6 @@ public class PlayerSource {
             this.audioFile.decreaseInteraction();
         }
         this.audioFile = audioFile;
-        audioFile.increaseInteraction();
+        this.audioFile.increaseInteraction();
     }
 }

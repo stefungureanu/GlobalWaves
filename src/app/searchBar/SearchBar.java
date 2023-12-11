@@ -3,8 +3,10 @@ package app.searchBar;
 
 import app.Admin;
 import app.audio.Collections.Playlist;
+import app.audio.Collections.Podcast;
 import app.audio.Files.Song;
 import app.audio.LibraryEntry;
+import app.user.Host;
 import app.user.User;
 import lombok.Getter;
 
@@ -126,8 +128,28 @@ public final class SearchBar {
                 }
 
                 break;
+
+            case "album":
+                entries = new ArrayList<>(Admin.getAlbums());
+
+                if (filters.getName() != null) {
+                    entries = filterByName(entries, filters.getName());
+                }
+
+                if (filters.getOwner() != null) {
+                    entries = filterByOwner(entries, filters.getOwner());
+                }
+
+                break;
             case "podcast":
                 entries = new ArrayList<>(Admin.getPodcasts());
+
+                // Adding podcasts from hosts.
+                for (User host : Admin.getHosts()) {
+                    for (Podcast podcast : ((Host) host).getPodcasts()) {
+                        entries.add(podcast);
+                    }
+                }
 
                 if (filters.getName() != null) {
                     entries = filterByName(entries, filters.getName());
@@ -146,7 +168,11 @@ public final class SearchBar {
         }
 
         this.results = entries;
-        this.lastSearchType = type;
+        if (type.equals("album")) {
+            this.lastSearchType = "playlist";
+        } else {
+            this.lastSearchType = type;
+        }
         return this.results;
     }
 

@@ -42,6 +42,13 @@ public final class Player {
 
         repeatMode = Enums.RepeatMode.NO_REPEAT;
         paused = true;
+        // Remove user interaction with ongoing audio.
+        if (source != null) {
+            source.getAudioFile().decreaseInteraction();
+            if (source.getAudioCollection() != null) {
+                source.getAudioCollection().decreaseInteractions();
+            }
+        }
         source = null;
         shuffle = false;
     }

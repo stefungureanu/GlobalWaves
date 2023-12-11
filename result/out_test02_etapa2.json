@@ -1,128 +1,124 @@
 [ {
-  "command" : "addUser",
-  "user" : "melodymaster",
-  "timestamp" : 5,
-  "message" : "The username melodymaster has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "rhythmrider",
-  "timestamp" : 10,
-  "message" : "The username rhythmrider has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "beatblazer",
-  "timestamp" : 15,
-  "message" : "The username beatblazer has been added successfully."
-}, {
-  "command" : "addUser",
-  "user" : "harmonichero",
-  "timestamp" : 20,
-  "message" : "The username harmonichero has been added successfully."
-}, {
-  "command" : "getOnlineUsers",
-  "timestamp" : 25,
-  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
-}, {
-  "command" : "addAlbum",
-  "user" : "melodymaster",
-  "timestamp" : 35,
-  "message" : "melodymaster has added new album successfully."
-}, {
-  "command" : "showAlbums",
-  "user" : "beatblazer",
-  "timestamp" : 40,
-  "result" : [ ]
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
-  "timestamp" : 45,
-  "message" : "melodymaster has added new event successfully."
-}, {
-  "command" : "addEvent",
-  "user" : "melodymaster",
-  "timestamp" : 50,
-  "message" : "melodymaster has added new event successfully."
-}, {
-  "command" : "addEvent",
-  "user" : "alice23",
-  "timestamp" : 55,
-  "message" : "The username alice23 doesn't exist."
-}, {
-  "command" : "addEvent",
-  "user" : "bob35",
-  "timestamp" : 60,
-  "message" : "bob35 is not an artist."
-}, {
   "command" : "search",
   "user" : "alice22",
-  "timestamp" : 65,
+  "timestamp" : 10,
   "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "results" : [ "Shape of You" ]
 }, {
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 70,
-  "message" : "Successfully selected melodymaster's page."
+  "timestamp" : 15,
+  "message" : "Successfully selected Shape of You."
 }, {
-  "command" : "printCurrentPage",
+  "command" : "load",
   "user" : "alice22",
-  "timestamp" : 75,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
+  "timestamp" : 20,
+  "message" : "Playback loaded successfully."
 }, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 80,
-  "message" : "melodymaster has added new merchandise successfully."
-}, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 85,
-  "message" : "melodymaster has added new merchandise successfully."
+  "command" : "status",
+  "user" : "alice22",
+  "timestamp" : 25,
+  "stats" : {
+    "name" : "Shape of You",
+    "remainedTime" : 228,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
 }, {
   "command" : "switchConnectionStatus",
   "user" : "alice22",
-  "timestamp" : 87,
+  "timestamp" : 240,
   "message" : "alice22 has changed status successfully."
 }, {
-  "command" : "addMerch",
-  "user" : "melodymaster",
-  "timestamp" : 90,
-  "message" : "Price for merchandise can not be negative."
+  "command" : "like",
+  "user" : "alice22",
+  "timestamp" : 280,
+  "message" : "alice22 is offline."
 }, {
-  "command" : "addMerch",
-  "user" : "Melodic Hoodie",
-  "timestamp" : 95,
-  "message" : "The username Melodic Hoodie doesn't exist."
-}, {
-  "command" : "addMerch",
+  "command" : "addUser",
   "user" : "melodymaster",
-  "timestamp" : 100,
-  "message" : "melodymaster has merchandise with the same name."
+  "timestamp" : 295,
+  "message" : "The username melodymaster has been added successfully."
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 305,
+  "message" : "melodymaster has added new album successfully."
+}, {
+  "command" : "showAlbums",
+  "user" : "melodymaster",
+  "timestamp" : 350,
+  "result" : [ {
+    "name" : "Harmonic Horizons",
+    "songs" : [ "Vibrant Echoes", "Synth Symphony", "Retro Rhythms", "Digital Dreams", "Night Pulse" ]
+  } ]
+}, {
+  "command" : "addUser",
+  "user" : "alice22",
+  "timestamp" : 380,
+  "message" : "The username alice22 is already taken."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 390,
+  "message" : "alice22 has changed status successfully."
 }, {
   "command" : "search",
   "user" : "alice22",
-  "results" : [ ],
-  "timestamp" : 105,
-  "message" : "alice22 is offline."
+  "timestamp" : 395,
+  "message" : "Search returned 2 results",
+  "results" : [ "Radio Ga Ga", "Retro Rhythms" ]
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 400,
+  "message" : "melodymaster has added new album successfully."
 }, {
   "command" : "search",
-  "user" : "bob35",
-  "timestamp" : 105,
-  "message" : "Search returned 1 results",
-  "results" : [ "melodymaster" ]
+  "user" : "alice22",
+  "timestamp" : 420,
+  "message" : "Search returned 4 results",
+  "results" : [ "Money Trees", "Maps", "Moves Like Jagger", "Melodic Mirage" ]
 }, {
   "command" : "select",
-  "user" : "bob35",
-  "timestamp" : 110,
-  "message" : "Successfully selected melodymaster's page."
+  "user" : "alice22",
+  "timestamp" : 430,
+  "message" : "Successfully selected Melodic Mirage."
+}, {
+  "command" : "load",
+  "user" : "alice22",
+  "timestamp" : 440,
+  "message" : "Playback loaded successfully."
+}, {
+  "command" : "like",
+  "user" : "alice22",
+  "timestamp" : 460,
+  "message" : "Like registered successfully."
 }, {
   "command" : "printCurrentPage",
   "user" : "alice22",
-  "timestamp" : 115,
-  "message" : "alice22 is offline."
+  "timestamp" : 480,
+  "message" : "Liked songs:\n\t[Melodic Mirage]\n\nFollowed playlists:\n\t[]"
 }, {
-  "command" : "printCurrentPage",
-  "user" : "bob35",
-  "timestamp" : 120,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[Harmonic T-Shirt - 25:\n\tLimited edition T-shirt featuring unique harmonic designs., Echoes Cap - 20:\n\tStylish cap with the 'Echoes of Harmony' album artwork.]\n\nEvents:\n\t[Harmonic Convergence - 15-06-2022:\n\tA night of mesmerizing melodies and soundscapes., Echoes of the Future - 23-09-2022:\n\tExploring futuristic sounds in a live performance.]"
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 515,
+  "message" : "melodymaster has another album with the same name."
+}, {
+  "command" : "showAlbums",
+  "user" : "melodymaster",
+  "timestamp" : 550,
+  "result" : [ {
+    "name" : "Harmonic Horizons",
+    "songs" : [ "Vibrant Echoes", "Synth Symphony", "Retro Rhythms", "Digital Dreams", "Night Pulse" ]
+  }, {
+    "name" : "Echoes of Harmony",
+    "songs" : [ "Melodic Mirage", "Pop Serenade" ]
+  } ]
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 560,
+  "message" : "melodymaster has the same song at least twice in this album."
 } ]
