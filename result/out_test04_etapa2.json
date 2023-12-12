@@ -59,20 +59,20 @@
   "message" : "Search returned 3 results",
   "results" : [ "Radio Ga Ga", "Rhythm Rise", "Rhythmic Revolution" ]
 }, {
+  "message" : "Please conduct a search before making a selection.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 65,
-  "message" : "Please conduct a search before making a selection."
+  "timestamp" : 65
 }, {
+  "message" : "Successfully selected Rhythmic Revolution.",
   "command" : "select",
   "user" : "melodicmind42",
-  "timestamp" : 70,
-  "message" : "Successfully selected Rhythmic Revolution."
+  "timestamp" : 70
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "melodicmind42",
-  "timestamp" : 75,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 75
 }, {
   "command" : "status",
   "user" : "melodicmind42",
@@ -106,15 +106,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Beat Odyssey" ]
 }, {
+  "message" : "Successfully selected Beat Odyssey.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 280,
-  "message" : "Successfully selected Beat Odyssey."
+  "timestamp" : 280
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 285,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 285
 }, {
   "command" : "deleteUser",
   "user" : "beatblazer",
@@ -137,15 +137,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Rapid Rhythms" ]
 }, {
+  "message" : "Successfully selected Rapid Rhythms.",
   "command" : "select",
   "user" : "melodicmind42",
-  "timestamp" : 1390,
-  "message" : "Successfully selected Rapid Rhythms."
+  "timestamp" : 1390
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "melodicmind42",
-  "timestamp" : 1440,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1440
 }, {
   "command" : "like",
   "user" : "melodicmind42",

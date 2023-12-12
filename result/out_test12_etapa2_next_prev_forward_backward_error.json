@@ -1,8 +1,8 @@
 [ {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "emily30",
-  "timestamp" : 150,
-  "message" : "Playlist created successfully."
+  "timestamp" : 150
 }, {
   "command" : "addUser",
   "user" : "melodymaster",
@@ -20,20 +20,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Digital Dreams" ]
 }, {
+  "message" : "Successfully selected Digital Dreams.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 190,
-  "message" : "Successfully selected Digital Dreams."
+  "timestamp" : 190
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 195,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 195
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "emily30",
-  "timestamp" : 240,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 240
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -41,20 +41,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Swimming Pools (Drank)" ]
 }, {
+  "message" : "Successfully selected Swimming Pools (Drank).",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 290,
-  "message" : "Successfully selected Swimming Pools (Drank)."
+  "timestamp" : 290
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 300,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 300
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "emily30",
-  "timestamp" : 340,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 340
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -83,15 +83,15 @@
     "paused" : true
   }
 }, {
+  "message" : "Successfully selected My favourite songs.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 1190,
-  "message" : "Successfully selected My favourite songs."
+  "timestamp" : 1190
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 1195,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1195
 }, {
   "command" : "status",
   "user" : "emily30",
@@ -157,15 +157,15 @@
   "timestamp" : 2120,
   "message" : "Please load a source before attempting to forward."
 }, {
+  "message" : "Successfully selected Harmonic Horizons.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 2190,
-  "message" : "Successfully selected Harmonic Horizons."
+  "timestamp" : 2190
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 2200,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 2200
 }, {
   "command" : "forward",
   "user" : "emily30",
@@ -210,10 +210,10 @@
   "message" : "Search returned 3 results",
   "results" : [ "DNA.", "Championships", "99 Problems" ]
 }, {
+  "message" : "Successfully selected Championships.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 4220,
-  "message" : "Successfully selected Championships."
+  "timestamp" : 4220
 }, {
   "command" : "forward",
   "user" : "emily30",
@@ -231,10 +231,10 @@
     "paused" : true
   }
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 4350,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 4350
 }, {
   "command" : "backward",
   "user" : "emily30",

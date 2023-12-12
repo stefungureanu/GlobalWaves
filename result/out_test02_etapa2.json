@@ -5,15 +5,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Shape of You" ]
 }, {
+  "message" : "Successfully selected Shape of You.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 15,
-  "message" : "Successfully selected Shape of You."
+  "timestamp" : 15
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 20,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 20
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -81,15 +81,15 @@
   "message" : "Search returned 4 results",
   "results" : [ "Money Trees", "Maps", "Moves Like Jagger", "Melodic Mirage" ]
 }, {
+  "message" : "Successfully selected Melodic Mirage.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 430,
-  "message" : "Successfully selected Melodic Mirage."
+  "timestamp" : 430
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 440,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 440
 }, {
   "command" : "like",
   "user" : "alice22",

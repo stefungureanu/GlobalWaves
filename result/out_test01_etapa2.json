@@ -5,10 +5,10 @@
   "message" : "Search returned 3 results",
   "results" : [ "Stairway to Heaven", "Start Me Up", "Stargazing" ]
 }, {
+  "message" : "Successfully selected Stairway to Heaven.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 15,
-  "message" : "Successfully selected Stairway to Heaven."
+  "timestamp" : 15
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -16,10 +16,10 @@
   "message" : "Search returned 3 results",
   "results" : [ "Shape of You", "Happier", "Castle on the Hill" ]
 }, {
+  "message" : "The selected ID is too high.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 25,
-  "message" : "The selected ID is too high."
+  "timestamp" : 25
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -96,9 +96,9 @@
 }, {
   "command" : "search",
   "user" : "alice22",
-  "results" : [ ],
   "timestamp" : 180,
-  "message" : "alice22 is offline."
+  "message" : "alice22 is offline.",
+  "results" : [ ]
 }, {
   "command" : "switchConnectionStatus",
   "user" : "alice22",
@@ -111,15 +111,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Big Pimpin'" ]
 }, {
+  "message" : "Successfully selected Big Pimpin'.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 250,
-  "message" : "Successfully selected Big Pimpin'."
+  "timestamp" : 250
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 280,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 280
 }, {
   "command" : "status",
   "user" : "alice22",

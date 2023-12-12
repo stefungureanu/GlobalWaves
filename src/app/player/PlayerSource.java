@@ -1,7 +1,9 @@
 package app.player;
 
 import app.audio.Collections.AudioCollection;
+import app.audio.Collections.Playlist;
 import app.audio.Files.AudioFile;
+import app.audio.Files.Song;
 import app.utils.Enums;
 import lombok.Getter;
 
@@ -34,9 +36,6 @@ public class PlayerSource {
      */
     public PlayerSource(final Enums.PlayerSourceType type, final AudioFile audioFile) {
         this.type = type;
-        if (this.audioFile != null) {
-            this.audioFile.decreaseInteraction();
-        }
         this.audioFile = audioFile;
         this.audioFile.increaseInteraction();
         this.remainedDuration = audioFile.getDuration();
@@ -246,5 +245,14 @@ public class PlayerSource {
         }
         this.audioFile = audioFile;
         this.audioFile.increaseInteraction();
+    }
+
+    public boolean checkUsage(AudioFile audioFile) {
+        if (audioCollection != null && type == Enums.PlayerSourceType.PLAYLIST) {
+            Playlist playlist = (Playlist) audioCollection;
+            if (playlist.getSongs().contains(audioFile))
+                return true;
+        }
+        return false;
     }
 }

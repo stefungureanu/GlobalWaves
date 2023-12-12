@@ -21,20 +21,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Night Pulse" ]
 }, {
+  "message" : "Successfully selected Night Pulse.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 15,
-  "message" : "Successfully selected Night Pulse."
+  "timestamp" : 15
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 20,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 20
 }, {
+  "message" : "Successfully selected Retro Rhythms.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 25,
-  "message" : "Successfully selected Retro Rhythms."
+  "timestamp" : 25
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -47,15 +47,15 @@
     "paused" : false
   }
 }, {
+  "message" : "Repeat mode changed to repeat once.",
   "command" : "repeat",
   "user" : "alice22",
-  "timestamp" : 31,
-  "message" : "Repeat mode changed to repeat once."
+  "timestamp" : 31
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "bob35",
-  "timestamp" : 31,
-  "message" : "Playlist created successfully."
+  "timestamp" : 31
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -79,15 +79,15 @@
     "paused" : false
   }
 }, {
+  "message" : "Repeat mode changed to repeat infinite.",
   "command" : "repeat",
   "user" : "alice22",
-  "timestamp" : 258,
-  "message" : "Repeat mode changed to repeat infinite."
+  "timestamp" : 258
 }, {
+  "message" : "Repeat mode changed to no repeat.",
   "command" : "repeat",
   "user" : "alice22",
-  "timestamp" : 258,
-  "message" : "Repeat mode changed to no repeat."
+  "timestamp" : 258
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -100,15 +100,15 @@
     "paused" : true
   }
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 1000,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1000
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "alice22",
-  "timestamp" : 1005,
-  "message" : "Playlist created successfully."
+  "timestamp" : 1005
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -116,20 +116,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Harmonic Horizons" ]
 }, {
+  "message" : "Successfully selected Harmonic Horizons.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 1007,
-  "message" : "Successfully selected Harmonic Horizons."
+  "timestamp" : 1007
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 1008,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1008
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 1009,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1009
 }, {
   "command" : "removeAlbum",
   "user" : "melodymaster",
@@ -142,25 +142,25 @@
   "message" : "Search returned 1 results",
   "results" : [ "Hustle Hard" ]
 }, {
+  "message" : "Successfully selected Hustle Hard.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 1011,
-  "message" : "Successfully selected Hustle Hard."
+  "timestamp" : 1011
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 1012,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1012
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
-  "timestamp" : 1012,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1012
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 1013,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1013
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -168,20 +168,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Butterfly Effect" ]
 }, {
+  "message" : "Successfully selected Butterfly Effect.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 1015,
-  "message" : "Successfully selected Butterfly Effect."
+  "timestamp" : 1015
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 1016,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1016
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 1017,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1017
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -189,20 +189,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Moves Like Jagger" ]
 }, {
+  "message" : "Successfully selected Moves Like Jagger.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 1019,
-  "message" : "Successfully selected Moves Like Jagger."
+  "timestamp" : 1019
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 1020,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1020
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 1021,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1021
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -216,25 +216,25 @@
   "message" : "Search returned 1 results",
   "results" : [ "Dream Chaser" ]
 }, {
+  "message" : "Successfully selected Dream Chaser.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 1023,
-  "message" : "Successfully selected Dream Chaser."
+  "timestamp" : 1023
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 1024,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1024
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 1025,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1025
 }, {
+  "message" : "Successfully selected My favourite songs.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 1025,
-  "message" : "Successfully selected My favourite songs."
+  "timestamp" : 1025
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -242,20 +242,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "My favourite songs" ]
 }, {
+  "message" : "Successfully selected My favourite songs.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 1027,
-  "message" : "Successfully selected My favourite songs."
+  "timestamp" : 1027
 }, {
+  "message" : "Playlist followed successfully.",
   "command" : "follow",
   "user" : "carol19",
-  "timestamp" : 1027,
-  "message" : "Playlist followed successfully."
+  "timestamp" : 1027
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 1028,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1028
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -268,10 +268,10 @@
     "paused" : false
   }
 }, {
+  "message" : "Repeat mode changed to repeat all.",
   "command" : "repeat",
   "user" : "alice22",
-  "timestamp" : 1036,
-  "message" : "Repeat mode changed to repeat all."
+  "timestamp" : 1036
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -311,15 +311,15 @@
     "paused" : false
   }
 }, {
+  "message" : "The selected ID is too high.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 2100,
-  "message" : "The selected ID is too high."
+  "timestamp" : 2100
 }, {
+  "message" : "Repeat mode changed to repeat current song.",
   "command" : "repeat",
   "user" : "alice22",
-  "timestamp" : 2100,
-  "message" : "Repeat mode changed to repeat current song."
+  "timestamp" : 2100
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -348,15 +348,15 @@
     "paused" : false
   }
 }, {
+  "message" : "Please select a source before following or unfollowing.",
   "command" : "follow",
   "user" : "carol19",
-  "timestamp" : 2335,
-  "message" : "Please select a source before following or unfollowing."
+  "timestamp" : 2335
 }, {
+  "message" : "Repeat mode changed to no repeat.",
   "command" : "repeat",
   "user" : "alice22",
-  "timestamp" : 2335,
-  "message" : "Repeat mode changed to no repeat."
+  "timestamp" : 2335
 }, {
   "command" : "status",
   "user" : "alice22",

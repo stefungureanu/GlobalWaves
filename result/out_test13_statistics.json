@@ -1,8 +1,8 @@
 [ {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "emily30",
-  "timestamp" : 130,
-  "message" : "Playlist created successfully."
+  "timestamp" : 130
 }, {
   "command" : "addUser",
   "user" : "melodymaster",
@@ -24,10 +24,10 @@
   "timestamp" : 144,
   "message" : "melodymaster 2 has added new album successfully."
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "bob35",
-  "timestamp" : 150,
-  "message" : "Playlist created successfully."
+  "timestamp" : 150
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -35,30 +35,30 @@
   "message" : "Search returned 5 results",
   "results" : [ "Vibrant Echoes", "Synth Symphony", "Retro Rhythms", "Digital Dreams", "Night Pulse" ]
 }, {
+  "message" : "Successfully selected Vibrant Echoes.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 190,
-  "message" : "Successfully selected Vibrant Echoes."
+  "timestamp" : 190
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 200,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 200
 }, {
   "command" : "like",
   "user" : "bob35",
   "timestamp" : 205,
   "message" : "Like registered successfully."
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
-  "timestamp" : 240,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 240
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "carol19",
-  "timestamp" : 250,
-  "message" : "Playlist created successfully."
+  "timestamp" : 250
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -66,25 +66,25 @@
   "message" : "Search returned 3 results",
   "results" : [ "Freedom", "Happy", "Freedom" ]
 }, {
+  "message" : "Successfully selected Freedom.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 290,
-  "message" : "Successfully selected Freedom."
+  "timestamp" : 290
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "carol19",
-  "timestamp" : 300,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 300
 }, {
   "command" : "like",
   "user" : "carol19",
   "timestamp" : 305,
   "message" : "Like registered successfully."
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "carol19",
-  "timestamp" : 340,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 340
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -92,15 +92,15 @@
   "message" : "Search returned 3 results",
   "results" : [ "Bohemian Rhapsody", "We Will Rock You", "Radio Ga Ga" ]
 }, {
+  "message" : "Successfully selected Bohemian Rhapsody.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 390,
-  "message" : "Successfully selected Bohemian Rhapsody."
+  "timestamp" : 390
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "carol19",
-  "timestamp" : 400,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 400
 }, {
   "command" : "like",
   "user" : "carol19",
@@ -113,20 +113,20 @@
   "message" : "Search returned 2 results",
   "results" : [ "Angie", "Nothing Else Matters" ]
 }, {
+  "message" : "Successfully selected Angie.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 490,
-  "message" : "Successfully selected Angie."
+  "timestamp" : 490
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "carol19",
-  "timestamp" : 500,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 500
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "carol19",
-  "timestamp" : 540,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 540
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -134,15 +134,15 @@
   "message" : "Search returned 3 results",
   "results" : [ "Freedom", "Happy", "Freedom" ]
 }, {
+  "message" : "Successfully selected Freedom.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 790,
-  "message" : "Successfully selected Freedom."
+  "timestamp" : 790
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "carol19",
-  "timestamp" : 800,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 800
 }, {
   "command" : "like",
   "user" : "carol19",
@@ -154,10 +154,10 @@
   "timestamp" : 1000,
   "result" : [ "Bohemian Rhapsody" ]
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "david27",
-  "timestamp" : 1150,
-  "message" : "Playlist created successfully."
+  "timestamp" : 1150
 }, {
   "command" : "search",
   "user" : "david27",
@@ -165,30 +165,30 @@
   "message" : "Search returned 2 results",
   "results" : [ "Angie", "Nothing Else Matters" ]
 }, {
+  "message" : "Successfully selected Angie.",
   "command" : "select",
   "user" : "david27",
-  "timestamp" : 1190,
-  "message" : "Successfully selected Angie."
+  "timestamp" : 1190
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "david27",
-  "timestamp" : 1200,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1200
 }, {
   "command" : "like",
   "user" : "david27",
   "timestamp" : 1205,
   "message" : "Like registered successfully."
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "david27",
-  "timestamp" : 1240,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 1240
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "emily30",
-  "timestamp" : 2150,
-  "message" : "Playlist created successfully."
+  "timestamp" : 2150
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -196,15 +196,15 @@
   "message" : "Search returned 3 results",
   "results" : [ "Bohemian Rhapsody", "We Will Rock You", "Radio Ga Ga" ]
 }, {
+  "message" : "Successfully selected Bohemian Rhapsody.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 2190,
-  "message" : "Successfully selected Bohemian Rhapsody."
+  "timestamp" : 2190
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 2295,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 2295
 }, {
   "command" : "showPreferredSongs",
   "user" : "emily30",
@@ -216,10 +216,10 @@
   "timestamp" : 2350,
   "message" : "Like registered successfully."
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "emily30",
-  "timestamp" : 2370,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 2370
 }, {
   "command" : "showPreferredSongs",
   "user" : "emily30",
@@ -232,15 +232,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "My first playlist" ]
 }, {
+  "message" : "Successfully selected My first playlist.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 2490,
-  "message" : "Successfully selected My first playlist."
+  "timestamp" : 2490
 }, {
+  "message" : "Playlist followed successfully.",
   "command" : "follow",
   "user" : "emily30",
-  "timestamp" : 2520,
-  "message" : "Playlist followed successfully."
+  "timestamp" : 2520
 }, {
   "command" : "getTop5Playlists",
   "timestamp" : 2560,
@@ -252,15 +252,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Just for fun" ]
 }, {
+  "message" : "Successfully selected Just for fun.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 2580,
-  "message" : "Successfully selected Just for fun."
+  "timestamp" : 2580
 }, {
+  "message" : "Playlist followed successfully.",
   "command" : "follow",
   "user" : "bob35",
-  "timestamp" : 2600,
-  "message" : "Playlist followed successfully."
+  "timestamp" : 2600
 }, {
   "command" : "search",
   "user" : "david27",
@@ -268,15 +268,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Just for fun" ]
 }, {
+  "message" : "Successfully selected Just for fun.",
   "command" : "select",
   "user" : "david27",
-  "timestamp" : 2810,
-  "message" : "Successfully selected Just for fun."
+  "timestamp" : 2810
 }, {
+  "message" : "Playlist followed successfully.",
   "command" : "follow",
   "user" : "david27",
-  "timestamp" : 2850,
-  "message" : "Playlist followed successfully."
+  "timestamp" : 2850
 }, {
   "command" : "getTop5Playlists",
   "timestamp" : 3000,
@@ -294,5 +294,9 @@
 }, {
   "command" : "getTop5Songs",
   "timestamp" : 3300,
-  "result" : [ "Bohemian Rhapsody", "Angie", "Shape of You", "Don't", "Stairway to Heaven" ]
+  "result" : [ "Bohemian Rhapsody", "Angie", "Vibrant Echoes", "Shape of You", "Don't" ]
+}, {
+  "command" : "getTop5Albums",
+  "timestamp" : 3480,
+  "result" : [ "Harmonic Horizons", "Harmonic Horizons 2" ]
 } ]

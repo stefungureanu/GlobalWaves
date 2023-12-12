@@ -20,20 +20,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Night Pulse" ]
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 1035,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 1035
 }, {
+  "message" : "Successfully selected Night Pulse.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 1100,
-  "message" : "Successfully selected Night Pulse."
+  "timestamp" : 1100
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 1120,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 1120
 }, {
   "command" : "search",
   "user" : "rhythmicrider58",
@@ -52,25 +52,25 @@
     "paused" : false
   }
 }, {
+  "message" : "Repeat mode changed to repeat once.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 1191,
-  "message" : "Repeat mode changed to repeat once."
+  "timestamp" : 1191
 }, {
+  "message" : "Repeat mode changed to repeat infinite.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 1192,
-  "message" : "Repeat mode changed to repeat infinite."
+  "timestamp" : 1192
 }, {
+  "message" : "Repeat mode changed to no repeat.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 2000,
-  "message" : "Repeat mode changed to no repeat."
+  "timestamp" : 2000
 }, {
+  "message" : "Successfully selected Synth Symphony.",
   "command" : "select",
   "user" : "rhythmicrider58",
-  "timestamp" : 2050,
-  "message" : "Successfully selected Synth Symphony."
+  "timestamp" : 2050
 }, {
   "command" : "status",
   "user" : "emily30",
@@ -83,15 +83,15 @@
     "paused" : true
   }
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 2135,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 2135
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "rhythmicrider58",
-  "timestamp" : 2185,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 2185
 }, {
   "command" : "status",
   "user" : "emily30",
@@ -110,20 +110,20 @@
   "message" : "Search returned 0 results",
   "results" : [ ]
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 2290,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 2290
 }, {
   "command" : "like",
   "user" : "rhythmicrider58",
   "timestamp" : 2295,
   "message" : "Like registered successfully."
 }, {
+  "message" : "Repeat mode changed to repeat once.",
   "command" : "repeat",
   "user" : "rhythmicrider58",
-  "timestamp" : 2480,
-  "message" : "Repeat mode changed to repeat once."
+  "timestamp" : 2480
 }, {
   "command" : "forward",
   "user" : "rhythmicrider58",
@@ -140,10 +140,10 @@
   "timestamp" : 2760,
   "message" : "melodymaster can't be deleted."
 }, {
+  "message" : "Please select a source before attempting to load.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 3000,
-  "message" : "Please select a source before attempting to load."
+  "timestamp" : 3000
 }, {
   "command" : "status",
   "user" : "emily30",
@@ -156,10 +156,10 @@
     "paused" : true
   }
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "emily30",
-  "timestamp" : 3150,
-  "message" : "Playlist created successfully."
+  "timestamp" : 3150
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -167,10 +167,10 @@
   "message" : "Search returned 1 results",
   "results" : [ "99 Problems" ]
 }, {
+  "message" : "Successfully selected 99 Problems.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 3190,
-  "message" : "Successfully selected 99 Problems."
+  "timestamp" : 3190
 }, {
   "command" : "search",
   "user" : "rhythmicrider58",
@@ -178,15 +178,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "My favourite songs" ]
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "emily30",
-  "timestamp" : 3195,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3195
 }, {
+  "message" : "Repeat mode changed to repeat once.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 3200,
-  "message" : "Repeat mode changed to repeat once."
+  "timestamp" : 3200
 }, {
   "command" : "status",
   "user" : "emily30",
@@ -199,15 +199,15 @@
     "paused" : false
   }
 }, {
+  "message" : "Successfully selected My favourite songs.",
   "command" : "select",
   "user" : "rhythmicrider58",
-  "timestamp" : 3225,
-  "message" : "Successfully selected My favourite songs."
+  "timestamp" : 3225
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "emily30",
-  "timestamp" : 3240,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 3240
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -215,25 +215,25 @@
   "message" : "Search returned 1 results",
   "results" : [ "My favourite songs" ]
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 3270,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 3270
 }, {
+  "message" : "Playlist followed successfully.",
   "command" : "follow",
   "user" : "rhythmicrider58",
-  "timestamp" : 3285,
-  "message" : "Playlist followed successfully."
+  "timestamp" : 3285
 }, {
+  "message" : "Successfully selected My favourite songs.",
   "command" : "select",
   "user" : "emily30",
-  "timestamp" : 3290,
-  "message" : "Successfully selected My favourite songs."
+  "timestamp" : 3290
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 3295,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 3295
 }, {
   "command" : "printCurrentPage",
   "user" : "rhythmicrider58",
@@ -256,10 +256,10 @@
   "timestamp" : 3320,
   "message" : "rhythmicrider58 accessed Home successfully."
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 3335,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 3335
 }, {
   "command" : "deleteUser",
   "user" : "melodymaster",
@@ -289,20 +289,20 @@
     "paused" : true
   }
 }, {
+  "message" : "A playlist with the same name already exists.",
   "command" : "createPlaylist",
   "user" : "emily30",
-  "timestamp" : 3405,
-  "message" : "A playlist with the same name already exists."
+  "timestamp" : 3405
 }, {
+  "message" : "Successfully selected Shape of You.",
   "command" : "select",
   "user" : "rhythmicrider58",
-  "timestamp" : 3410,
-  "message" : "Successfully selected Shape of You."
+  "timestamp" : 3410
 }, {
+  "message" : "Please load a source before setting the repeat status.",
   "command" : "repeat",
   "user" : "emily30",
-  "timestamp" : 3435,
-  "message" : "Please load a source before setting the repeat status."
+  "timestamp" : 3435
 }, {
   "command" : "showPlaylists",
   "user" : "emily30",
@@ -314,10 +314,10 @@
     "followers" : 1
   } ]
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "rhythmicrider58",
-  "timestamp" : 3440,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3440
 }, {
   "command" : "deleteUser",
   "user" : "emily30",

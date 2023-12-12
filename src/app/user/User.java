@@ -147,6 +147,8 @@ public class User {
      */
     public String changePage(final CommandInput commandInput) {
         String message = username + " accessed " + commandInput.getNextPage() + " successfully.";
+        if (selectedUser != null)
+            selectedUser.decreasePageVisitors();
         switch (commandInput.getNextPage()) {
             case "Home":
                 pageType = Enums.pageSelection.HOME;
@@ -325,7 +327,7 @@ public class User {
         }
 
         if (!player.getType().equals("playlist")) {
-            return "The loaded source is not a playlist.";
+            return "The loaded source is not a playlist or an album.";
         }
 
         player.shuffle(seed);
@@ -393,9 +395,10 @@ public class User {
         if (likedSongs.contains(song)) {
             likedSongs.remove(song);
             song.dislike();
-
+            System.out.println("DISLIKED -1" + song.getName());
             return "Unlike registered successfully.";
         }
+        System.out.println("LIKED -1" + song.getName());
 
         likedSongs.add(song);
         song.like();
@@ -478,10 +481,12 @@ public class User {
 
         if (playlist.containsSong((Song) player.getCurrentAudioFile())) {
             playlist.removeSong((Song) player.getCurrentAudioFile());
+            player.getCurrentAudioFile().decreasePlaylistInteractions();
             return "Successfully removed from playlist.";
         }
 
         playlist.addSong((Song) player.getCurrentAudioFile());
+        player.getCurrentAudioFile().increasePlaylistInteractions();
         return "Successfully added to playlist.";
     }
 
@@ -652,6 +657,14 @@ public class User {
                 // Iterate through the followed playlists and remove the ones created by the current user (this)
                 userFollowedPlaylists.removeIf(playlist -> playlist.getOwner().equals(this.getUsername()));
             }
+        }
+    }
+
+    public boolean usingSong(AudioFile audioFile) {
+        if (player != null) {
+            return player.checkUsage(audioFile);
+        } else {
+            return false;
         }
     }
 }

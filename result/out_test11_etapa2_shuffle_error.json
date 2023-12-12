@@ -1,8 +1,8 @@
 [ {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "bob35",
-  "timestamp" : 50,
-  "message" : "Playlist created successfully."
+  "timestamp" : 50
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -10,20 +10,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "TED Talks Daily" ]
 }, {
+  "message" : "Successfully selected TED Talks Daily.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 110,
-  "message" : "Successfully selected TED Talks Daily."
+  "timestamp" : 110
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 115,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 115
 }, {
   "command" : "shuffle",
   "user" : "bob35",
   "timestamp" : 120,
-  "message" : "The loaded source is not a playlist."
+  "message" : "The loaded source is not a playlist or an album."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -31,20 +31,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Blank Space" ]
 }, {
+  "message" : "Successfully selected Blank Space.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 210,
-  "message" : "Successfully selected Blank Space."
+  "timestamp" : 210
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 213,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 213
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
-  "timestamp" : 215,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 215
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -52,20 +52,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Whole Lotta Love" ]
 }, {
+  "message" : "Successfully selected Whole Lotta Love.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 260,
-  "message" : "Successfully selected Whole Lotta Love."
+  "timestamp" : 260
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 263,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 263
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
-  "timestamp" : 265,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 265
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -73,20 +73,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "I Don't Wanna Live Forever" ]
 }, {
+  "message" : "Successfully selected I Don't Wanna Live Forever.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 410,
-  "message" : "Successfully selected I Don't Wanna Live Forever."
+  "timestamp" : 410
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 415,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 415
 }, {
   "command" : "shuffle",
   "user" : "bob35",
   "timestamp" : 420,
-  "message" : "The loaded source is not a playlist."
+  "message" : "The loaded source is not a playlist or an album."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -94,20 +94,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Kings Dead" ]
 }, {
+  "message" : "Successfully selected Kings Dead.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 510,
-  "message" : "Successfully selected Kings Dead."
+  "timestamp" : 510
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 513,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 513
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
-  "timestamp" : 515,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 515
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -115,20 +115,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "Thinking Out Loud" ]
 }, {
+  "message" : "Successfully selected Thinking Out Loud.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 560,
-  "message" : "Successfully selected Thinking Out Loud."
+  "timestamp" : 560
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 563,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 563
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
-  "timestamp" : 565,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 565
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -152,15 +152,15 @@
   "timestamp" : 3120,
   "message" : "Please load a source before using the shuffle function."
 }, {
+  "message" : "Successfully selected Colaj.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 3130,
-  "message" : "Successfully selected Colaj."
+  "timestamp" : 3130
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "bob35",
-  "timestamp" : 3140,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3140
 }, {
   "command" : "status",
   "user" : "bob35",

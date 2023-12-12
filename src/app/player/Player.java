@@ -2,6 +2,7 @@ package app.player;
 
 import app.audio.Collections.AudioCollection;
 import app.audio.Files.AudioFile;
+import app.audio.Files.Song;
 import app.audio.LibraryEntry;
 import app.utils.Enums;
 import lombok.Getter;
@@ -105,6 +106,15 @@ public final class Player {
     public void setSource(final LibraryEntry entry, final String sourceType) {
         if ("podcast".equals(this.type)) {
             bookmarkPodcast();
+        }
+
+        if (source != null) {
+            if (source.getAudioFile() != null) {
+                source.getAudioFile().decreaseInteraction();
+            }
+            if (source.getAudioCollection() != null) {
+                source.getAudioCollection().decreaseInteractions();
+            }
         }
 
         this.type = sourceType;
@@ -278,5 +288,13 @@ public final class Player {
         }
 
         return new PlayerStats(filename, duration, repeatMode, shuffle, paused);
+    }
+
+    public boolean checkUsage(AudioFile audioFile) {
+        if (source != null) {
+            return source.checkUsage(audioFile);
+        } else {
+            return false;
+        }
     }
 }

@@ -59,10 +59,10 @@
   "message" : "Search returned 1 results",
   "results" : [ "melodymaster" ]
 }, {
+  "message" : "Successfully selected melodymaster's page.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 70,
-  "message" : "Successfully selected melodymaster's page."
+  "timestamp" : 70
 }, {
   "command" : "printCurrentPage",
   "user" : "alice22",
@@ -101,9 +101,9 @@
 }, {
   "command" : "search",
   "user" : "alice22",
-  "results" : [ ],
   "timestamp" : 105,
-  "message" : "alice22 is offline."
+  "message" : "alice22 is offline.",
+  "results" : [ ]
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -111,10 +111,10 @@
   "message" : "Search returned 1 results",
   "results" : [ "melodymaster" ]
 }, {
+  "message" : "Successfully selected melodymaster's page.",
   "command" : "select",
   "user" : "bob35",
-  "timestamp" : 110,
-  "message" : "Successfully selected melodymaster's page."
+  "timestamp" : 110
 }, {
   "command" : "printCurrentPage",
   "user" : "alice22",

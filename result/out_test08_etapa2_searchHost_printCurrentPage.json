@@ -5,15 +5,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "TED Radio Hour" ]
 }, {
+  "message" : "Successfully selected TED Radio Hour.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 15,
-  "message" : "Successfully selected TED Radio Hour."
+  "timestamp" : 15
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 20,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 20
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -73,10 +73,10 @@
   "timestamp" : 53,
   "message" : "soundseeker has another podcast with the same name."
 }, {
+  "message" : "Successfully selected soundseeker's page.",
   "command" : "select",
   "user" : "jack29",
-  "timestamp" : 57,
-  "message" : "Successfully selected soundseeker's page."
+  "timestamp" : 57
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -84,20 +84,20 @@
   "message" : "Search returned 1 results",
   "results" : [ "TED Radio Hour" ]
 }, {
+  "message" : "Successfully selected TED Radio Hour.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 65,
-  "message" : "Successfully selected TED Radio Hour."
+  "timestamp" : 65
 }, {
   "command" : "addAnnouncement",
   "user" : "alice22",
   "timestamp" : 67,
   "message" : "alice22 is not a host."
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 70,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 70
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -121,15 +121,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "Auditory Adventures" ]
 }, {
+  "message" : "Successfully selected Auditory Adventures.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 80,
-  "message" : "Successfully selected Auditory Adventures."
+  "timestamp" : 80
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 85,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 85
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -147,10 +147,10 @@
   "timestamp" : 90,
   "message" : "Podcasts:\n\t[Auditory Adventures:\n\t[Exploring Sonic Landscapes - Journey through the world's most unique auditory experiences., The Future of Music Technology - A look into the innovations shaping the future of music production and listening., Cultural Beats - An exploration of how different cultures influence music genres.]\n, Harmony & History:\n\t[The Roots of Blues - Tracing the origins and evolution of blues music., Classical Music's Modern Impact - Discussing how classical music continues to influence contemporary artists., Jazz Journeys - Exploring the rich history and vibrant present of jazz music., The Folk Revival - Examining the resurgence of folk music in modern times.]\n]\n\nAnnouncements:\n\t[Announcement1:\n\tPrimul anunt adaugat!\n]"
 }, {
+  "message" : "Playback paused successfully.",
   "command" : "playPause",
   "user" : "alice22",
-  "timestamp" : 3200,
-  "message" : "Playback paused successfully."
+  "timestamp" : 3200
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -163,10 +163,10 @@
     "paused" : true
   }
 }, {
+  "message" : "Playlist created successfully.",
   "command" : "createPlaylist",
   "user" : "alice22",
-  "timestamp" : 3210,
-  "message" : "Playlist created successfully."
+  "timestamp" : 3210
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -174,15 +174,15 @@
   "message" : "Search returned 2 results",
   "results" : [ "Freedom", "Freedom" ]
 }, {
+  "message" : "Successfully selected Freedom.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 3220,
-  "message" : "Successfully selected Freedom."
+  "timestamp" : 3220
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 3225,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3225
 }, {
   "command" : "search",
   "user" : "david27",
@@ -190,10 +190,15 @@
   "message" : "Search returned 1 results",
   "results" : [ "2010 hits" ]
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 3230,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 3230
+}, {
+  "command" : "removePodcast",
+  "user" : "soundseeker",
+  "timestamp" : 3233,
+  "message" : "soundseeker doesn't have a podcast with the given name."
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -201,25 +206,30 @@
   "message" : "Search returned 1 results",
   "results" : [ "Happier" ]
 }, {
+  "message" : "Successfully selected Happier.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 3240,
-  "message" : "Successfully selected Happier."
+  "timestamp" : 3240
 }, {
+  "command" : "removePodcast",
+  "user" : "soundseeker",
+  "timestamp" : 3243,
+  "message" : "soundseeker deleted the podcast successfully."
+}, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 3245,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3245
 }, {
   "command" : "addUser",
   "user" : "magichost",
   "timestamp" : 3247,
   "message" : "The username magichost has been added successfully."
 }, {
+  "message" : "Successfully selected 2010 hits.",
   "command" : "select",
   "user" : "david27",
-  "timestamp" : 3247,
-  "message" : "Successfully selected 2010 hits."
+  "timestamp" : 3247
 }, {
   "command" : "addUser",
   "user" : "magichost",
@@ -232,20 +242,17 @@
   "result" : [ {
     "name" : "Auditory Adventures",
     "episodes" : [ "Exploring Sonic Landscapes", "The Future of Music Technology", "Cultural Beats" ]
-  }, {
-    "name" : "Harmony & History",
-    "episodes" : [ "The Roots of Blues", "Classical Music's Modern Impact", "Jazz Journeys", "The Folk Revival" ]
   } ]
 }, {
+  "message" : "Playlist followed successfully.",
   "command" : "follow",
   "user" : "david27",
-  "timestamp" : 3250,
-  "message" : "Playlist followed successfully."
+  "timestamp" : 3250
 }, {
+  "message" : "Successfully added to playlist.",
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
-  "timestamp" : 3250,
-  "message" : "Successfully added to playlist."
+  "timestamp" : 3250
 }, {
   "command" : "showPlaylists",
   "user" : "alice22",
@@ -268,15 +275,15 @@
   "timestamp" : 3257,
   "message" : "david27 was successfully deleted."
 }, {
+  "message" : "Successfully selected 2010 hits.",
   "command" : "select",
   "user" : "alice22",
-  "timestamp" : 3260,
-  "message" : "Successfully selected 2010 hits."
+  "timestamp" : 3260
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "alice22",
-  "timestamp" : 3265,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3265
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -295,10 +302,10 @@
     "paused" : false
   }
 }, {
+  "message" : "Successfully selected Auditory Adventures.",
   "command" : "select",
   "user" : "carol19",
-  "timestamp" : 3300,
-  "message" : "Successfully selected Auditory Adventures."
+  "timestamp" : 3300
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -311,10 +318,10 @@
     "paused" : false
   }
 }, {
+  "message" : "Playback loaded successfully.",
   "command" : "load",
   "user" : "carol19",
-  "timestamp" : 3450,
-  "message" : "Playback loaded successfully."
+  "timestamp" : 3450
 }, {
   "command" : "status",
   "user" : "alice22",

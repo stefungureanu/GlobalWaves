@@ -9,10 +9,10 @@ import app.user.Host;
 import app.user.User;
 import app.utils.Enums;
 import fileio.input.*;
+import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The type Admin.
@@ -21,6 +21,7 @@ public final class Admin {
     private static List<User> users = new ArrayList<>();
     private static List<Song> songs = new ArrayList<>();
     private static List<Podcast> podcasts = new ArrayList<>();
+    @Getter
     private static int timestamp = 0;
     private static final int LIMIT = 5;
 
@@ -77,6 +78,10 @@ public final class Admin {
                 }
                 break;
             case HOST:
+                if (user.safeDelete()) {
+                    deleted = true;
+                    users.remove(user);
+                }
                 break;
             default:
         }
@@ -255,6 +260,11 @@ public final class Admin {
      */
     public static List<String> getTop5Songs() {
         List<Song> sortedSongs = new ArrayList<>(songs);
+        for (Playlist album : Admin.getAlbums()) {
+            for (Song song : album.getSongs()) {
+                sortedSongs.add(song);
+            }
+        }
         sortedSongs.sort(Comparator.comparingInt(Song::getLikes).reversed());
         List<String> topSongs = new ArrayList<>();
         int count = 0;
@@ -291,6 +301,34 @@ public final class Admin {
     }
 
     /**
+     * Gets top 5 albums.
+     *
+     * @return the top 5 albums
+     */
+    public static List<String> getTop5Albums() {
+        List<Playlist> allAlbums = getAlbums();
+
+        // Create a map to store the total likes for each album
+        Map<Playlist, Integer> albumLikesMap = new HashMap<>();
+
+        // Iterate through each album and sum up the likes from all songs
+        for (Playlist album : allAlbums) {
+            int totalLikes = album.getSongs().stream().mapToInt(Song::getLikes).sum();
+            albumLikesMap.put(album, totalLikes);
+        }
+
+        // Sort albums by total likes in descending order
+        List<Playlist> sortedAlbums = allAlbums.stream()
+                .sorted(Comparator.comparingInt(albumLikesMap::get).reversed())
+                .collect(Collectors.toList());
+
+        // Return the top 5 album names (or all if there are fewer than 5)
+        return sortedAlbums.stream().limit(5)
+                .map(Playlist::getName)
+                .collect(Collectors.toList());
+    }
+
+    /**
      * Gets online users.
      *
      * @return the online users
@@ -319,9 +357,9 @@ public final class Admin {
     }
 
     /**
-     * Gets top 5 playlists.
+     * Gets all users.
      *
-     * @return the top 5 playlists
+     * @return the list of users
      */
     public static List<String> getAllUsers() {
         List<String> allUsers = new ArrayList<>();

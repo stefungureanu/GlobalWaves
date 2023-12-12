@@ -5,6 +5,8 @@ import app.audio.Collections.AlbumOutput;
 import app.audio.Collections.Playlist;
 import app.audio.Files.AudioFile;
 import app.audio.Files.Song;
+import app.player.PlayerSource;
+import app.user.content.Announcement;
 import app.user.content.Event;
 import app.user.content.Merch;
 import app.utils.Enums;
@@ -28,6 +30,23 @@ public class Artist extends User {
         super(username, age, city);
         super.setUserType(Enums.userType.ARTIST);
         super.setConnectionStatus(Enums.Connectivity.OFFLINE);
+    }
+
+    public String removeEvent(CommandInput commandInput) {
+        // Iterate through the announcements
+        Iterator<Event> iterator = events.iterator();
+        while (iterator.hasNext()) {
+            Event event = iterator.next();
+
+            // Check if the announcement has the same name
+            if (event.getName().equals(commandInput.getName())) {
+                iterator.remove(); // Remove the announcement
+                return this.getUsername() + " deleted the event successfully.";
+            }
+        }
+
+        // If no matching announcement is found
+        return this.getUsername() + " has no event with the given name.";
     }
 
     public String addEvent(CommandInput commandInput) {
@@ -131,13 +150,11 @@ public class Artist extends User {
 
     public String removeAlbum(CommandInput commandInput) {
         String message = new String();
-        for (Playlist album : albums) {
-            if (!album.getName().equals(commandInput.getName())) {
+        Playlist oldAlbum = getAlbumByName(commandInput.getName());
+            if (oldAlbum == null) {
                 message = super.getUsername() + " doesn't have an album with the given name.";
                 return message;
             }
-        }
-        Playlist oldAlbum = getAlbumByName(commandInput.getName());
         if (!safeAlbum(oldAlbum)) {
             message = super.getUsername() + " can't delete this album.";
             return message;
@@ -205,6 +222,9 @@ public class Artist extends User {
         if (this.getPageVisitors() != 0) {
             return false;
         }
+        if (Admin.getTimestamp() == 7890) {
+            System.out.println("awfda");
+        }
         for (Playlist album : albums) {
             if (album.getInteractions() != 0) {
                 return false;
@@ -212,6 +232,21 @@ public class Artist extends User {
             for (Song song : album.getSongs()) {
                 if (song.getInteractions() != 0)
                     return false;
+                if (song.getPlaylistInteractions() != 0) {
+                    if (!deadPlaylist(song)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean deadPlaylist(Song song) {
+        List<User> users = Admin.getNormalUsers();
+        for (User user : users) {
+            if (user.usingSong(song)) {
+                return false;
             }
         }
         return true;
@@ -295,6 +330,11 @@ public class Artist extends User {
         for (Song song : album.getSongs()) {
             if (song.getInteractions() != 0) {
                 return false;
+            }
+            if (song.getPlaylistInteractions() != 0) {
+                if (!deadPlaylist(song)) {
+                    return false;
+                }
             }
         }
         return true;

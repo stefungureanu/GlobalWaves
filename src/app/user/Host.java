@@ -30,6 +30,61 @@ public class Host extends User {
         super.setConnectionStatus(Enums.Connectivity.OFFLINE);
     }
 
+
+    @Override
+    public boolean safeDelete() {
+        if (this.getPageVisitors() != 0) {
+            return false;
+        }
+        for (Podcast podcast : podcasts) {
+            if (podcast.getInteractions() != 0) {
+                return false;
+            }
+            for (Episode episode : podcast.getEpisodes()) {
+                if (episode.getInteractions() != 0)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public String removePodcast(CommandInput commandInput) {
+        String message = new String();
+        Podcast oldPodcast = getPodcastByName(commandInput.getName());
+        if (oldPodcast == null) {
+            message = super.getUsername() + " doesn't have a podcast with the given name.";
+            return message;
+        }
+        if (!safePodcast(oldPodcast)) {
+            message = super.getUsername() + " can't delete this podcast.";
+            return message;
+        }
+        podcasts.remove(oldPodcast);
+        message = super.getUsername() + " deleted the podcast successfully.";
+        return message;
+    }
+
+    private boolean safePodcast(Podcast podcast) {
+        if (podcast.getInteractions() != 0) {
+            return false;
+        }
+        for (Episode episode : podcast.getEpisodes()) {
+            if (episode.getInteractions() != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Podcast getPodcastByName(String name) {
+        for (Podcast podcast : podcasts) {
+            if (podcast.getName().equalsIgnoreCase(name)) {
+                return podcast;
+            }
+        }
+        return null;
+    }
+
     public String addAnnouncement(CommandInput commandInput) {
         // Check if the artist has another merch with the same name
         if (hasAnnouncemenetWithSameName(commandInput.getName())) {

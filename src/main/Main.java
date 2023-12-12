@@ -91,6 +91,9 @@ public final class Main {
             Admin.updateTimestamp(command.getTimestamp());
 
             String commandName = command.getCommand();
+//            if (command.getTimestamp().equals(7890) && command.getUsername().equals("sonicpainter")) {
+//                System.out.println("aaaa");
+//            }
 
             switch (commandName) {
                 case "search" -> outputs.add(CommandRunner.search(command));
@@ -147,8 +150,12 @@ public final class Main {
                         outputs.add(CommandRunner.showPodcasts(command));
                 case "removeAlbum" ->
                         outputs.add(CommandRunner.removeAlbum(command));
+                case "removePodcast" ->
+                        outputs.add(CommandRunner.removePodcast(command));
                 case "changePage" ->
                         outputs.add(CommandRunner.changePage(command));
+                case "getTop5Albums" ->
+                        outputs.add(CommandRunner.getTop5Albums(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }
