@@ -1,20 +1,18 @@
 package fileio.input;
 
-import app.audio.Files.Song;
-
 import java.util.ArrayList;
 
 public final class CommandInput {
     private String command;
     private String username;
     private Integer timestamp;
-    private String type; // song / playlist / podcast
-    private FiltersInput filters; // pentru search
-    private Integer itemNumber; // pentru select
-    private Integer repeatMode; // pentru repeat
-    private Integer playlistId; // pentru add/remove song
-    private String playlistName; // pentru create playlist
-    private Integer seed; // pentru shuffle
+    private String type; // audio types / users.
+    private FiltersInput filters;
+    private Integer itemNumber;
+    private Integer repeatMode;
+    private Integer playlistId;
+    private String playlistName;
+    private Integer seed;
     private int age;
     private String city;
     private String name;
@@ -113,7 +111,7 @@ public final class CommandInput {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(final int age) {
         this.age = age;
     }
 
@@ -121,7 +119,7 @@ public final class CommandInput {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(final String city) {
         this.city = city;
     }
 
@@ -129,7 +127,7 @@ public final class CommandInput {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -137,7 +135,7 @@ public final class CommandInput {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(final int releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -145,7 +143,7 @@ public final class CommandInput {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -153,7 +151,7 @@ public final class CommandInput {
         return songs;
     }
 
-    public void setSongs(ArrayList<SongInput> songs) {
+    public void setSongs(final ArrayList<SongInput> songs) {
         this.songs = songs;
     }
 
@@ -161,7 +159,7 @@ public final class CommandInput {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(final String date) {
         this.date = date;
     }
 
@@ -169,7 +167,7 @@ public final class CommandInput {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(final int price) {
         this.price = price;
     }
 
@@ -177,7 +175,7 @@ public final class CommandInput {
         return episodes;
     }
 
-    public void setEpisodes(ArrayList<EpisodeInput> episodes) {
+    public void setEpisodes(final ArrayList<EpisodeInput> episodes) {
         this.episodes = episodes;
     }
 
@@ -185,7 +183,7 @@ public final class CommandInput {
         return nextPage;
     }
 
-    public void setNextPage(String nextPage) {
+    public void setNextPage(final String nextPage) {
         this.nextPage = nextPage;
     }
 

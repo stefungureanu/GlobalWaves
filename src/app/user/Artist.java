@@ -3,22 +3,22 @@ package app.user;
 import app.Admin;
 import app.audio.Collections.AlbumOutput;
 import app.audio.Collections.Playlist;
-import app.audio.Files.AudioFile;
 import app.audio.Files.Song;
-import app.player.PlayerSource;
-import app.user.content.Announcement;
 import app.user.content.Event;
 import app.user.content.Merch;
 import app.utils.Enums;
+import app.utils.visitor.Visitor;
 import fileio.input.CommandInput;
 import fileio.input.SongInput;
 import lombok.Getter;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.Iterator;
+import java.util.HashSet;
 
-public class Artist extends User {
+public final class Artist extends User {
     @Getter
     private List<Playlist> albums = new ArrayList<>();
     @Getter
@@ -26,36 +26,71 @@ public class Artist extends User {
     @Getter
     private List<Merch> merch = new ArrayList<>();
 
-    public Artist(String username, int age, String city) {
+    // Enum for "magic number" errors.
+    public enum DateConstants {
+        MIN_YEAR(1999),
+        MAX_YEAR(2023),
+        YEAR_BEGIN(6),
+        MONTH_BEGIN(3),
+        MONTH_END(5),
+        DAY_END(2),
+        MAX_MONTH(12),
+        FEBRUARY(2),
+        FEBRUARY_DAYS(28),
+        NORMAL_MONTH(31);
+
+        private final int value;
+
+        DateConstants(final int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
+    public Artist(final String username, final int age, final String city) {
         super(username, age, city);
-        super.setUserType(Enums.userType.ARTIST);
+        super.setUserType(Enums.UserType.ARTIST);
         super.setConnectionStatus(Enums.Connectivity.OFFLINE);
     }
 
-    public String removeEvent(CommandInput commandInput) {
-        // Iterate through the announcements
+    @Override
+    public String accept(final Visitor visitor) {
+        return visitor.visit(this);
+    }
+
+    /**
+     * Removes event based on name.
+     *
+     * @param commandInput command containing event name
+     * @return command result message
+     */
+    public String removeEvent(final CommandInput commandInput) {
         Iterator<Event> iterator = events.iterator();
         while (iterator.hasNext()) {
             Event event = iterator.next();
-
-            // Check if the announcement has the same name
             if (event.getName().equals(commandInput.getName())) {
-                iterator.remove(); // Remove the announcement
+                iterator.remove();
                 return this.getUsername() + " deleted the event successfully.";
             }
         }
 
-        // If no matching announcement is found
         return this.getUsername() + " has no event with the given name.";
     }
 
-    public String addEvent(CommandInput commandInput) {
-        // Check if the artist has another event with the same name
+    /**
+     * Adds event to artist's event list.
+     *
+     * @param commandInput command containing event info
+     * @return command result message
+     */
+    public String addEvent(final CommandInput commandInput) {
         if (hasEventWithSameName(commandInput.getName())) {
             return this.getUsername() + " has another event with the same name.";
         }
 
-        // Valid date
         if (!isValidEventDate(commandInput.getDate())) {
             return "Event for " + this.getUsername() + " does not have a valid date.";
         }
@@ -67,13 +102,17 @@ public class Artist extends User {
         return this.getUsername() + " has added new event successfully.";
     }
 
-    public String addMerch(CommandInput commandInput) {
-        // Check if the artist has another merch with the same name
+    /**
+     * Adds merch to artist's merch list.
+     *
+     * @param commandInput command containing merch info
+     * @return command result message
+     */
+    public String addMerch(final CommandInput commandInput) {
         if (hasMerchWithSameName(commandInput.getName())) {
             return this.getUsername() + " has merchandise with the same name.";
         }
 
-        // Valid date
         if (commandInput.getPrice() < 0) {
             return "Price for merchandise can not be negative.";
         }
@@ -85,16 +124,16 @@ public class Artist extends User {
         return this.getUsername() + " has added new merchandise successfully.";
     }
 
-    private boolean hasMerchWithSameName(String merchName) {
-        for (Merch merch : merch) {
-            if (merch.getName().equals(merchName)) {
+    private boolean hasMerchWithSameName(final String merchName) {
+        for (Merch currentMerch : merch) {
+            if (currentMerch.getName().equals(merchName)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean hasEventWithSameName(String eventName) {
+    private boolean hasEventWithSameName(final String eventName) {
         for (Event event : events) {
             if (event.getName().equals(eventName)) {
                 return true;
@@ -103,53 +142,46 @@ public class Artist extends User {
         return false;
     }
 
-    private boolean isValidEventDate(String eventDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        dateFormat.setLenient(false);
+    // dd-mm-yyyy format.
+    private boolean isValidEventDate(final String eventDate) {
+        int year = Integer.parseInt(eventDate.substring(DateConstants.YEAR_BEGIN.getValue()));
+        int month = Integer.parseInt(eventDate.substring(DateConstants.MONTH_BEGIN.getValue(),
+                DateConstants.MONTH_END.getValue()));
+        int day = Integer.parseInt(eventDate.substring(0, DateConstants.DAY_END.getValue()));
 
-        try {
-            Date date = dateFormat.parse(eventDate);
-
-            // Valid year
-            int year = Integer.parseInt(eventDate.substring(6));
-            if (year < 1900 || year > 2023) {
-                return false;
-            }
-
-            // Valid month
-            int month = Integer.parseInt(eventDate.substring(3, 5));
-            if (month < 1 || month > 12) {
-                return false;
-            }
-
-            // Valid day
-            int day = Integer.parseInt(eventDate.substring(0, 2));
-            if (day < 1 || day > monthExceptions(month, year)) {
-                return false;
-            }
-
-            return true;
-        } catch (ParseException | NumberFormatException e) {
+        if (year < DateConstants.MIN_YEAR.getValue() || year > DateConstants.MAX_YEAR.getValue()) {
             return false;
         }
+
+        if (month < 1 || month > DateConstants.MAX_MONTH.getValue()) {
+            return false;
+        }
+
+        if (day < 1 || day > daysByMonths(month)) {
+            return false;
+        }
+
+        return true;
+
     }
 
-    private int monthExceptions(int month, int year) {
-        switch (month) {
-            case 2:
-                return 28;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                return 30;
-            default:
-                return 31;
+    private int daysByMonths(final int month) {
+        // Feb.
+        if (month == DateConstants.FEBRUARY.getValue()) {
+            return DateConstants.FEBRUARY_DAYS.getValue();
+        } else {
+            return DateConstants.NORMAL_MONTH.getValue();
         }
     }
 
-    public String removeAlbum(CommandInput commandInput) {
-        String message = new String();
+    /**
+     * Removes album, if artist has it.
+     *
+     * @param commandInput command containing album name
+     * @return command result message
+     */
+    public String removeAlbum(final CommandInput commandInput) {
+        String message;
         Playlist oldAlbum = getAlbumByName(commandInput.getName());
             if (oldAlbum == null) {
                 message = super.getUsername() + " doesn't have an album with the given name.";
@@ -164,9 +196,15 @@ public class Artist extends User {
         return message;
     }
 
-    public String addAlbum(CommandInput commandInput) {
-        String message = new String();
-        // Checking if there's already an album with the same name.
+    /**
+     * Adds album if: 1. It doesn't already exist. 2. It doesn't have the same song twice or +.
+     *
+     * @param commandInput command containing album information
+     * @return command result message
+     */
+    public String addAlbum(final CommandInput commandInput) {
+        String message;
+
         for (Playlist album : albums) {
             if (album.getName().equals(commandInput.getName())) {
                 message = super.getUsername() + " has another album with the same name.";
@@ -178,6 +216,7 @@ public class Artist extends User {
             message = super.getUsername() + " has the same song at least twice in this album.";
             return message;
         }
+
         Playlist newAlbum = new Playlist(commandInput.getName(), super.getUsername());
         for (SongInput songInput : commandInput.getSongs()) {
             Song song = new Song(songInput.getName(), songInput.getDuration(), songInput.getAlbum(),
@@ -185,11 +224,19 @@ public class Artist extends User {
                     songInput.getReleaseYear(), songInput.getArtist());
             newAlbum.addSong(song);
         }
+
+        
+
         albums.add(newAlbum);
         message = super.getUsername() + " has added new album successfully.";
         return message;
     }
 
+    /**
+     * Prints artist's albums.
+     *
+     * @return the artist's albums as album output
+     */
     public ArrayList<AlbumOutput> showAlbums() {
         ArrayList<AlbumOutput> albumOutputs = new ArrayList<>();
         for (Playlist album : albums) {
@@ -199,17 +246,17 @@ public class Artist extends User {
     }
 
     /**
-     * Function to help check if the same song name appears twice. Works on the basis of sets
-     * having unique objects.
+     * Function to help check if the same song name appears twice. Using set properties for
+     * unique items.
      *
      * @param songs List of songs to check
      * @return True if there are duplicates, false otherwise
      */
-    private boolean hasSameSong(List<SongInput> songs) {
-        // Use a Set to track unique song names
+    private boolean hasSameSong(final List<SongInput> songs) {
         Set<String> songNames = new HashSet<>();
 
         for (SongInput song : songs) {
+            // Can't add -> set already has the same name.
             if (!songNames.add(song.getName())) {
                 return true;
             }
@@ -217,22 +264,30 @@ public class Artist extends User {
         return false;
     }
 
+    /**
+     * Checks if the artist can safely be deleted.
+     *
+     * @return True if it can be deleted, false otherwise.
+     */
     @Override
     public boolean safeDelete() {
+        // No one on his page.
         if (this.getPageVisitors() != 0) {
             return false;
         }
-        if (Admin.getTimestamp() == 7890) {
-            System.out.println("awfda");
-        }
+
         for (Playlist album : albums) {
+            // No one using his playlists (albums).
             if (album.getInteractions() != 0) {
                 return false;
             }
             for (Song song : album.getSongs()) {
-                if (song.getInteractions() != 0)
+                // No one using songs from his albums.
+                if (song.getInteractions() != 0) {
                     return false;
+                }
                 if (song.getPlaylistInteractions() != 0) {
+                    // If there's a song in a playlist, check if it 's currently playing.
                     if (!deadPlaylist(song)) {
                         return false;
                     }
@@ -242,7 +297,8 @@ public class Artist extends User {
         return true;
     }
 
-    private boolean deadPlaylist(Song song) {
+    // Goes through every user's player and check "song" in their loaded playlist.
+    private boolean deadPlaylist(final Song song) {
         List<User> users = Admin.getNormalUsers();
         for (User user : users) {
             if (user.usingSong(song)) {
@@ -252,21 +308,19 @@ public class Artist extends User {
         return true;
     }
 
+    /**
+     * If a user has any of the artist's songs, remove them from their liked list.
+     */
     public void removeLikes() {
-        // Iterate through each normal user in Admin.getNormalUsers()
         for (User user : Admin.getNormalUsers()) {
-            // Iterate through the user's likedSongs
             Iterator<Song> iterator = user.getLikedSongs().iterator();
             while (iterator.hasNext()) {
                 Song likedSong = iterator.next();
-
-                // Check if the likedSong is a song contained in any of the artist's albums
                 for (Playlist album : albums) {
                     for (Song song : album.getSongs()) {
                         if (song.equals(likedSong)) {
-                            iterator.remove(); // Remove the likedSong from the user's likedSongs
-                            likedSong.dislike(); // Update the liked status of the song
-                            break; // Move to the next likedSong
+                            iterator.remove();
+                            break;
                         }
                     }
                 }
@@ -274,39 +328,35 @@ public class Artist extends User {
         }
     }
 
+    /**
+     * If a user follows any of the artist's albums, remove them from their followed list.
+     */
     public void removeFollows() {
-        // Iterate through each normal user in Admin.getNormalUsers()
         for (User user : Admin.getNormalUsers()) {
-            // Iterate through the user's followedPlaylists
             Iterator<Playlist> iterator = user.getFollowedPlaylists().iterator();
             while (iterator.hasNext()) {
                 Playlist followedPlaylist = iterator.next();
-
-                // Check if the followedPlaylist is one of the artist's albums
                 if (albums.contains(followedPlaylist)) {
-                    iterator.remove(); // Remove the followedPlaylist from the user's followedPlaylists
+                    iterator.remove();
                 }
             }
         }
     }
 
+    /**
+     * Remove artist's songs from user's created playlists.
+     */
     public void removePlaylistAdds() {
-        // Iterate through each normal user in Admin.getNormalUsers()
         for (User user : Admin.getNormalUsers()) {
-            // Iterate through the user's playlists
             Iterator<Playlist> userPlaylistIterator = user.getPlaylists().iterator();
             while (userPlaylistIterator.hasNext()) {
                 Playlist userPlaylist = userPlaylistIterator.next();
-
-                // Iterate through the songs in the artist's albums
                 for (Playlist artistAlbum : albums) {
                     Iterator<Song> songIterator = userPlaylist.getSongs().iterator();
                     while (songIterator.hasNext()) {
                         Song song = songIterator.next();
-
-                        // Check if the song is contained in the artist's album
                         if (artistAlbum.containsSong(song)) {
-                            songIterator.remove(); // Remove the song from the user's playlist
+                            songIterator.remove();
                         }
                     }
                 }
@@ -314,7 +364,13 @@ public class Artist extends User {
         }
     }
 
-    public Playlist getAlbumByName(String name) {
+    /**
+     * Finds album by name in artist's albums.
+     *
+     * @param name of the searched album
+     * @return the album if found
+     */
+    public Playlist getAlbumByName(final String name) {
         for (Playlist album : albums) {
             if (album.getName().equalsIgnoreCase(name)) {
                 return album;
@@ -323,7 +379,8 @@ public class Artist extends User {
         return null;
     }
 
-    private boolean safeAlbum(Playlist album) {
+    // Check if album can be deleted (no one's interacting with it).
+    private boolean safeAlbum(final Playlist album) {
         if (album.getInteractions() != 0) {
             return false;
         }
@@ -340,13 +397,31 @@ public class Artist extends User {
         return true;
     }
 
-    public void deleteAlbum(Playlist album) {
-        // Remove the album from the artist's list of albums
-        albums.remove(album);
+    /**
+     * Gets total likes from albums.
+     *
+     * @return the number of likes
+     */
+    public int getTotalLikes() {
+        int likes = 0;
+        for (Playlist album : albums) {
+            for (Song song : album.getSongs()) {
+                likes += song.getLikes();
+            }
+        }
+        return likes;
+    }
 
+    /**
+     * Deletes album from artist's album list.
+     *
+     * @param album the album that needs to be deleted
+     */
+    public void deleteAlbum(final Playlist album) {
+        albums.remove(album);
         // Remove the album from all users' liked songs and followed playlists
         for (User user : Admin.getNormalUsers()) {
-            // Remove liked songs from the deleted album
+            // Remove liked songs from the deleted album.
             Iterator<Song> likedSongsIterator = user.getLikedSongs().iterator();
             while (likedSongsIterator.hasNext()) {
                 Song likedSong = likedSongsIterator.next();
@@ -354,8 +429,7 @@ public class Artist extends User {
                     likedSongsIterator.remove();
                 }
             }
-
-            // Remove followed playlists pointing to the deleted album
+            // Remove album from followed playlist.
             Iterator<Playlist> followedPlaylistsIterator = user.getFollowedPlaylists().iterator();
             while (followedPlaylistsIterator.hasNext()) {
                 Playlist followedPlaylist = followedPlaylistsIterator.next();
@@ -363,8 +437,7 @@ public class Artist extends User {
                     followedPlaylistsIterator.remove();
                 }
             }
-
-            // Remove playlist adds pointing to the deleted album
+            // Remove songs from album in playlists.
             Iterator<Playlist> userPlaylistIterator = user.getPlaylists().iterator();
             while (userPlaylistIterator.hasNext()) {
                 Playlist userPlaylist = userPlaylistIterator.next();

@@ -168,6 +168,7 @@ public final class SearchBar {
         }
 
         this.results = entries;
+        // Albums are effectively a playlist, so they're treated as such.
         if (type.equals("album")) {
             this.lastSearchType = "playlist";
         } else {

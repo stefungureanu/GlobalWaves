@@ -1,6 +1,6 @@
 package app.utils;
 
-public class Enums { // diferite enumuri, le-am gurpat pe toate intr-un loc
+public class Enums {
     public enum Genre {
         POP,
         ROCK,
@@ -12,13 +12,13 @@ public class Enums { // diferite enumuri, le-am gurpat pe toate intr-un loc
         PRIVATE
     }
 
-    public enum userType {
+    public enum UserType {
         NORMAL,
         ARTIST,
         HOST
     }
 
-    public enum pageSelection {
+    public enum PageSelection {
         HOME,
         LIKED,
         ARTIST,

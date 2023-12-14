@@ -70,16 +70,12 @@ public final class Main {
     public static void action(final String filePath1,
                               final String filePath2) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println(filePath2);
         LibraryInput library = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
                                                                + "library/library.json"),
                                                                LibraryInput.class);
         CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
                                                                   + filePath1),
                                                                   CommandInput[].class);
-//        CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH
-//                        + "test06_etapa2_repeat.json"),
-//                CommandInput[].class);
 
         ArrayNode outputs = objectMapper.createArrayNode();
 
@@ -91,9 +87,6 @@ public final class Main {
             Admin.updateTimestamp(command.getTimestamp());
 
             String commandName = command.getCommand();
-//            if (command.getTimestamp().equals(7890) && command.getUsername().equals("sonicpainter")) {
-//                System.out.println("aaaa");
-//            }
 
             switch (commandName) {
                 case "search" -> outputs.add(CommandRunner.search(command));
@@ -156,6 +149,8 @@ public final class Main {
                         outputs.add(CommandRunner.changePage(command));
                 case "getTop5Albums" ->
                         outputs.add(CommandRunner.getTop5Albums(command));
+                case "getTop5Artists" ->
+                        outputs.add(CommandRunner.getTop5Artists(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

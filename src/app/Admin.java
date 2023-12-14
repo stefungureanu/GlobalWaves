@@ -8,10 +8,19 @@ import app.user.Artist;
 import app.user.Host;
 import app.user.User;
 import app.utils.Enums;
-import fileio.input.*;
+import app.utils.visitor.PrintPage;
+import fileio.input.EpisodeInput;
+import fileio.input.SongInput;
+import fileio.input.CommandInput;
+import fileio.input.UserInput;
+import fileio.input.PodcastInput;
 import lombok.Getter;
 
-import java.util.*;
+import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 /**
@@ -24,6 +33,8 @@ public final class Admin {
     @Getter
     private static int timestamp = 0;
     private static final int LIMIT = 5;
+    @Getter
+    private static PrintPage pageVisitor = new PrintPage();
 
     private Admin() {
     }
@@ -91,12 +102,14 @@ public final class Admin {
         return message;
     }
 
+    // Removal for artist (albums, songs liked in the albums, songs in playlists from albums).
     private static void removeUserData(final Artist artist) {
         artist.removeLikes();
         artist.removeFollows();
         artist.removePlaylistAdds();
     }
 
+    // Removal for normal user.
     private static void removeUserData(final User user) {
         user.dislikeAll();
         user.unfollowAll();
@@ -187,8 +200,9 @@ public final class Admin {
     public static List<Playlist> getAlbums() {
         List<Playlist> albums = new ArrayList<>();
         for (User user : users) {
-            if (user.getUserType().equals(Enums.userType.ARTIST))
-                albums.addAll(((Artist)user).getAlbums());
+            if (user.getUserType().equals(Enums.UserType.ARTIST)) {
+                albums.addAll(((Artist) user).getAlbums());
+            }
         }
         return albums;
     }
@@ -232,8 +246,12 @@ public final class Admin {
     public static List<User> getArtists() {
         List<User> artists = new ArrayList<>();
         for (User user : users) {
-            if (user.getUserType().equals(Enums.userType.ARTIST)) {
+            if (user.getUserType().equals(Enums.UserType.ARTIST)) {
                 artists.add(user);
+                if (user.getUsername().equals("amanda16"))
+                    System.out.println("ajaja");
+                if (user.getUsername().equals("leslie27"))
+                    System.out.println("AVFAJFJ");
             }
         }
         return artists;
@@ -246,7 +264,7 @@ public final class Admin {
     public static List<User> getHosts() {
         List<User> hosts = new ArrayList<>();
         for (User user : users) {
-            if (user.getUserType().equals(Enums.userType.HOST)) {
+            if (user.getUserType().equals(Enums.UserType.HOST)) {
                 hosts.add(user);
             }
         }
@@ -260,14 +278,30 @@ public final class Admin {
      */
     public static List<String> getTop5Songs() {
         List<Song> sortedSongs = new ArrayList<>(songs);
+
+        // Add songs from albums
         for (Playlist album : Admin.getAlbums()) {
             for (Song song : album.getSongs()) {
                 sortedSongs.add(song);
+                if (song.getName().equals("Luminescence Crescendo")) {
+                    System.out.println("kobe");
+                }
+                if (song.getName().equals("Night Utopia")) {
+                    System.out.println("aaaa");
+                }
             }
         }
-        sortedSongs.sort(Comparator.comparingInt(Song::getLikes).reversed());
+
+        // Sort by likes (descending), then by original order
+        sortedSongs.sort(
+                Comparator.<Song, Integer>comparing(Song::getLikes).reversed()
+                        .thenComparing(Comparator.comparingInt(sortedSongs::indexOf))
+        );
+
         List<String> topSongs = new ArrayList<>();
         int count = 0;
+
+        // Add top songs to the result list
         for (Song song : sortedSongs) {
             if (count >= LIMIT) {
                 break;
@@ -275,6 +309,7 @@ public final class Admin {
             topSongs.add(song.getName());
             count++;
         }
+
         return topSongs;
     }
 
@@ -301,29 +336,59 @@ public final class Admin {
     }
 
     /**
+     * Gets top 5 playlists.
+     *
+     * @return the top 5 playlists
+     */
+    public static List<String> getTop5Artists() {
+        List<User> users = getArtists();
+        List<Artist> sortedArtists = new ArrayList<>();
+        // Workaround because the getArtists method returns users.
+        for (User user : users) {
+                sortedArtists.add((Artist) user);
+        }
+
+        sortedArtists.sort(Comparator.comparingInt(Artist::getTotalLikes).reversed());
+
+        List<String> topArtists = new ArrayList<>();
+        int count = 0;
+        for (Artist artist : sortedArtists) {
+            if (count >= LIMIT) {
+                break;
+            }
+            topArtists.add(artist.getUsername());
+            count++;
+        }
+        return topArtists;
+    }
+
+    /**
      * Gets top 5 albums.
      *
      * @return the top 5 albums
      */
     public static List<String> getTop5Albums() {
+        // TO DO
         List<Playlist> allAlbums = getAlbums();
-
-        // Create a map to store the total likes for each album
         Map<Playlist, Integer> albumLikesMap = new HashMap<>();
 
-        // Iterate through each album and sum up the likes from all songs
+        // Calculate total likes for each album
         for (Playlist album : allAlbums) {
             int totalLikes = album.getSongs().stream().mapToInt(Song::getLikes).sum();
             albumLikesMap.put(album, totalLikes);
         }
 
-        // Sort albums by total likes in descending order
+        // Sort albums by likes (descending), then by name (ascending) for tiebreakers
         List<Playlist> sortedAlbums = allAlbums.stream()
-                .sorted(Comparator.comparingInt(albumLikesMap::get).reversed())
+                .sorted(
+                        Comparator.<Playlist, Integer>comparing(albumLikesMap::get).reversed()
+                                .thenComparing(Comparator.comparing(Playlist::getName))
+                )
                 .collect(Collectors.toList());
 
-        // Return the top 5 album names (or all if there are fewer than 5)
-        return sortedAlbums.stream().limit(5)
+        // Return the names of the top albums
+        return sortedAlbums.stream()
+                .limit(LIMIT)
                 .map(Playlist::getName)
                 .collect(Collectors.toList());
     }
@@ -336,8 +401,9 @@ public final class Admin {
     public static List<String> getOnlineUsers() {
         List<String> onlineUserList = new ArrayList<>();
         for (User user : users) {
-            if (user.getConnectionStatus() == Enums.Connectivity.ONLINE)
+            if (user.getConnectionStatus() == Enums.Connectivity.ONLINE) {
                 onlineUserList.add(user.getUsername());
+            }
         }
         return onlineUserList;
     }
@@ -350,8 +416,9 @@ public final class Admin {
     public static List<User> getNormalUsers() {
         List<User> normalUserList = new ArrayList<>();
         for (User user : users) {
-            if (user.getUserType() == Enums.userType.NORMAL)
+            if (user.getUserType() == Enums.UserType.NORMAL) {
                 normalUserList.add(user);
+            }
         }
         return normalUserList;
     }
@@ -363,22 +430,25 @@ public final class Admin {
      */
     public static List<String> getAllUsers() {
         List<String> allUsers = new ArrayList<>();
-        // Normal users
+        // Normal users.
         for (User user : users) {
-            if (user.getUserType() == Enums.userType.NORMAL)
+            if (user.getUserType() == Enums.UserType.NORMAL) {
                 allUsers.add(user.getUsername());
+            }
         }
 
-        // Artists
+        // Artists.
         for (User user : users) {
-            if (user.getUserType() == Enums.userType.ARTIST)
+            if (user.getUserType() == Enums.UserType.ARTIST) {
                 allUsers.add(user.getUsername());
+            }
         }
 
-        // Hosts
+        // Hosts.
         for (User user : users) {
-            if (user.getUserType() == Enums.userType.HOST)
+            if (user.getUserType() == Enums.UserType.HOST) {
                 allUsers.add(user.getUsername());
+            }
         }
         return allUsers;
     }

@@ -2,15 +2,15 @@ package app.user.content;
 
 import lombok.Getter;
 
-public class Merch {
+public final class Merch {
     @Getter
-    private String name;
+    private final String name;
     @Getter
-    private String description;
+    private final String description;
     @Getter
-    private int price;
+    private final int price;
 
-    public Merch(String name, String description, int price) {
+    public Merch(final String name, final String description, final int price) {
         this.name = name;
         this.description = description;
         this.price = price;

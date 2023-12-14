@@ -10,6 +10,7 @@ import lombok.Getter;
 @Getter
 public abstract class AudioCollection extends LibraryEntry {
     private final String owner;
+    // Used to track how many users are currently interacting with the audio collection.
     @Getter
     private Integer interactions = 0;
 
@@ -48,10 +49,16 @@ public abstract class AudioCollection extends LibraryEntry {
         return this.getOwner().equals(user);
     }
 
+    /**
+     * Increases number of interactions.
+     */
     public void increaseInteractions() {
         interactions++;
     }
 
+    /**
+     * Decreases number of interactions.
+     */
     public void decreaseInteractions() {
         interactions--;
     }

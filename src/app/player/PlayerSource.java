@@ -3,7 +3,6 @@ package app.player;
 import app.audio.Collections.AudioCollection;
 import app.audio.Collections.Playlist;
 import app.audio.Files.AudioFile;
-import app.audio.Files.Song;
 import app.utils.Enums;
 import lombok.Getter;
 
@@ -49,11 +48,14 @@ public class PlayerSource {
      */
     public PlayerSource(final Enums.PlayerSourceType type, final AudioCollection audioCollection) {
         this.type = type;
+        // Decrease interactions for collection if there is any old playlist / podcast.
         if (this.audioCollection != null) {
             this.audioCollection.decreaseInteractions();
         }
         this.audioCollection = audioCollection;
+        // Increasing interactions for audio collection.
         this.audioCollection.increaseInteractions();
+        // Decreasing again if there was any song / episode left and so on...
         if (this.audioFile != null) {
             this.audioFile.decreaseInteraction();
         }
@@ -247,11 +249,18 @@ public class PlayerSource {
         this.audioFile.increaseInteraction();
     }
 
-    public boolean checkUsage(AudioFile audioFile) {
+    /**
+     * Checks the current collection for any matches with audioFile.
+     *
+     * @param audio The audio file to be checked in current media collection
+     * @return True if it exists, false otherwise
+     */
+    public boolean checkUsage(final AudioFile audio) {
         if (audioCollection != null && type == Enums.PlayerSourceType.PLAYLIST) {
             Playlist playlist = (Playlist) audioCollection;
-            if (playlist.getSongs().contains(audioFile))
+            if (playlist.getSongs().contains(audio)) {
                 return true;
+            }
         }
         return false;
     }

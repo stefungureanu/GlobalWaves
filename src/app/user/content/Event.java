@@ -2,15 +2,15 @@ package app.user.content;
 
 import lombok.Getter;
 
-public class Event {
+public final class Event {
     @Getter
-    private String name;
+    private final String name;
     @Getter
-    private String description;
+    private final String description;
     @Getter
-    private String date;
+    private final String date;
 
-    public Event(String name, String description, String date) {
+    public Event(final String name, final String description, final String date) {
         this.name = name;
         this.description = description;
         this.date = date;

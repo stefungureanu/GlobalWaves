@@ -12,88 +12,70 @@ import app.user.content.Event;
 import app.user.content.Merch;
 import app.utils.Enums;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PrintPage implements Visitor {
+public final class PrintPage implements Visitor {
     private static final Integer MAX_RESULTS = 5;
     @Override
-    public String visit(Artist artist) {
-        StringBuilder representation = new StringBuilder("Albums:\n\t[");
-        representation.append(getAlbumNames(artist)); // Display albums
-        representation.append("]\n\nMerch:\n\t[");
-        representation.append(getMerchDetails(artist)); // Display merchandise details
-        representation.append("]\n\nEvents:\n\t[");
-        representation.append(getEventDetails(artist)); // Display event details
-        representation.append("]");
-        return representation.toString();
+    public String visit(final Artist artist) {
+        StringBuilder page = new StringBuilder("Albums:\n\t[");
+        page.append(getAlbumNames(artist));
+        page.append("]\n\nMerch:\n\t[");
+        page.append(getMerchDetails(artist));
+        page.append("]\n\nEvents:\n\t[");
+        page.append(getEventDetails(artist));
+        page.append("]");
+        return page.toString();
     }
 
-    // Helper method to get the names of albums
-    private String getAlbumNames(Artist artist) {
+    private String getAlbumNames(final Artist artist) {
         StringBuilder albumNames = new StringBuilder();
-        int count = 0;
         for (Playlist album : artist.getAlbums()) {
-            if (count >= MAX_RESULTS) {
-                break;
-            }
             albumNames.append(album.getName());
-            if (count < MAX_RESULTS - 1 && count < artist.getAlbums().size() - 1) {
+            if (artist.getAlbums().indexOf(album) < artist.getAlbums().size() - 1) {
                 albumNames.append(", ");
             }
-            count++;
         }
         return albumNames.toString();
     }
 
-    // Helper method to get the details of merchandise
-    private String getMerchDetails(Artist artist) {
+    private String getMerchDetails(final Artist artist) {
         StringBuilder merchDetails = new StringBuilder();
-        int count = 0;
         for (Merch merch : artist.getMerch()) {
-            if (count >= MAX_RESULTS) {
-                break;
-            }
             merchDetails.append(merch.getName()).append(" - ").append(merch.getPrice())
                     .append(":\n\t").append(merch.getDescription());
-            if (count < MAX_RESULTS - 1 && count < artist.getMerch().size() - 1) {
+            if (artist.getMerch().indexOf(merch) < artist.getMerch().size() - 1) {
                 merchDetails.append(", ");
             }
-            count++;
         }
         return merchDetails.toString();
     }
 
-    // Helper method to get the details of events
-    private String getEventDetails(Artist artist) {
+    private String getEventDetails(final Artist artist) {
         StringBuilder eventDetails = new StringBuilder();
-        int count = 0;
         for (Event event : artist.getEvents()) {
-            if (count >= MAX_RESULTS) {
-                break;
-            }
             eventDetails.append(event.getName()).append(" - ").append(event.getDate())
                     .append(":\n\t").append(event.getDescription());
-            if (count < MAX_RESULTS - 1 && count < artist.getEvents().size() - 1) {
+            if (artist.getEvents().indexOf(event) < artist.getEvents().size() - 1) {
                 eventDetails.append(", ");
             }
-            count++;
         }
         return eventDetails.toString();
     }
 
     @Override
-    public String visit(Host host) {
-        StringBuilder representation = new StringBuilder("Podcasts:\n\t[");
-        representation.append(getPodcastDetails(host)); // Display podcast details
-        representation.append("]\n\nAnnouncements:\n\t[");
-        representation.append(getAnnouncementDetails(host)); // Display announcement details
-        representation.append("]");
-        return representation.toString();
+    public String visit(final Host host) {
+        StringBuilder page = new StringBuilder("Podcasts:\n\t[");
+        page.append(getPodcastDetails(host));
+        page.append("]\n\nAnnouncements:\n\t[");
+        page.append(getAnnouncementDetails(host));
+        page.append("]");
+        return page.toString();
     }
 
-    // Helper method to get the details of podcasts
-    private String getPodcastDetails(Host host) {
+    private String getPodcastDetails(final Host host) {
         StringBuilder podcastDetails = new StringBuilder();
         int count = 0;
         for (Podcast podcast : host.getPodcasts()) {
@@ -101,15 +83,15 @@ public class PrintPage implements Visitor {
                 podcastDetails.append(", ");
             }
             podcastDetails.append(podcast.getName()).append(":\n\t[");
-            podcastDetails.append(getEpisodeDetails(podcast.getEpisodes())); // Display episode details
-            //podcastDetails.append("]");
+
+            podcastDetails.append(getEpisodeDetails(podcast.getEpisodes()));
+
             count++;
         }
         return podcastDetails.toString();
     }
 
-    // Helper method to get the details of episodes
-    private String getEpisodeDetails(List<Episode> episodes) {
+    private String getEpisodeDetails(final List<Episode> episodes) {
         StringBuilder episodeDetails = new StringBuilder();
         int count = 0;
         for (Episode episode : episodes) {
@@ -123,59 +105,68 @@ public class PrintPage implements Visitor {
         return episodeDetails.toString();
     }
 
-    // Helper method to get the details of announcements
-    private String getAnnouncementDetails(Host host) {
+    private String getAnnouncementDetails(final Host host) {
         StringBuilder announcementDetails = new StringBuilder();
         int count = 0;
         for (Announcement announcement : host.getAnnouncements()) {
             if (count > 0) {
                 announcementDetails.append(", ");
             }
-            announcementDetails.append(announcement.getName()).append(":\n\t").append(announcement.getDescription()).append("\n");
+            announcementDetails.append(announcement.getName()).append(":\n\t")
+                    .append(announcement.getDescription()).append("\n");
             count++;
         }
         return announcementDetails.toString();
     }
 
 
-
     @Override
-    public String visit(User user) {
-        if (user.getPageType() == Enums.pageSelection.HOME) {
-            StringBuilder representation = new StringBuilder("Liked songs:\n\t[");
-            representation.append(getLikedSongsNames(user)); // Display up to 5 liked songs
-            representation.append("]\n\nFollowed playlists:\n\t[");
-            representation.append(getFollowedPlaylistsNames(user)); // Display up to 5 followed playlists
-            representation.append("]");
-            return representation.toString();
+    public String visit(final User user) {
+        if (user.getPageType() == Enums.PageSelection.HOME) {
+            // Up to 5 of each.
+            StringBuilder page = new StringBuilder("Liked songs:\n\t[");
+            page.append(getLikedSongsNames(user));
+            page.append("]\n\nFollowed playlists:\n\t[");
+            page.append(getFollowedPlaylistsNames(user));
+            page.append("]");
+            return page.toString();
         } else {
-            StringBuilder representation = new StringBuilder("Liked songs:\n\t[");
-            representation.append(getLikedSongsDetails(user)); // Display details of liked songs
-            representation.append("]\n\nFollowed playlists:\n\t[");
-            representation.append(getFollowedPlaylistsDetails(user)); // Display details of followed playlists
-            representation.append("]");
-            return representation.toString();
+            // Liked page.
+            StringBuilder page = new StringBuilder("Liked songs:\n\t[");
+            page.append(getLikedSongsDetails(user));
+            page.append("]\n\nFollowed playlists:\n\t[");
+            page.append(getFollowedPlaylistsDetails(user));
+            page.append("]");
+            return page.toString();
         }
     }
 
-    // Helper method to get the names of liked songs
     private String getLikedSongsNames(final User user) {
+        // First sorting them by popularity.
+        List<Song> sortedSongs = user.getLikedSongs().stream()
+                .sorted(Comparator.comparingInt(Song::getLikes).reversed())
+                .collect(Collectors.toList());
+
         StringBuilder songsNames = new StringBuilder();
         int count = 0;
-        for (Song song : user.getLikedSongs()) {
+
+        for (Song song : sortedSongs) {
             if (count >= MAX_RESULTS) {
                 break;
             }
+
             songsNames.append(song.getName());
-            if (count < MAX_RESULTS - 1 && count < user.getLikedSongs().size() - 1) {
+
+            if (count < MAX_RESULTS - 1 && count < sortedSongs.size() - 1) {
                 songsNames.append(", ");
             }
+
             count++;
         }
+
         return songsNames.toString();
     }
 
-    // Helper method to get the names of followed playlists
     private String getFollowedPlaylistsNames(final User user) {
         StringBuilder playlistsNames = new StringBuilder();
         int count = 0;
@@ -192,7 +183,6 @@ public class PrintPage implements Visitor {
         return playlistsNames.toString();
     }
 
-    // Helper method to get the details of liked songs
     private String getLikedSongsDetails(final User user) {
         StringBuilder songsDetails = new StringBuilder();
         int count = 0;
@@ -206,7 +196,6 @@ public class PrintPage implements Visitor {
         return songsDetails.toString();
     }
 
-    // Helper method to get the details of followed playlists
     private String getFollowedPlaylistsDetails(final User user) {
         StringBuilder playlistsDetails = new StringBuilder();
         int count = 0;

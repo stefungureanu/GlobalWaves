@@ -8,10 +8,10 @@ public final class FiltersInput {
     private ArrayList<String> tags;
     private String lyrics;
     private String genre;
-    private String releaseYear; // pentru search song/episode -> releaseYear
+    private String releaseYear;
     private String artist;
-    private String owner; // pentru search playlist si podcast
-    private String followers; // pentru search playlist -> followers
+    private String owner;
+    private String followers;
     private String description;
 
     public FiltersInput() {
@@ -93,7 +93,7 @@ public final class FiltersInput {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 

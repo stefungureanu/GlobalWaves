@@ -1,36 +1,44 @@
 package app.user;
 
-import app.audio.Collections.AlbumOutput;
-import app.audio.Collections.Playlist;
 import app.audio.Collections.Podcast;
 import app.audio.Collections.PodcastOutput;
 import app.audio.Files.Episode;
-import app.audio.Files.Song;
 import app.user.content.Announcement;
-import app.user.content.Event;
-import app.user.content.Merch;
 import app.utils.Enums;
+import app.utils.visitor.Visitor;
 import fileio.input.CommandInput;
 import fileio.input.EpisodeInput;
-import fileio.input.SongInput;
 import lombok.Getter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.Iterator;
+import java.util.HashSet;
 
-public class Host extends User {
+public final class Host extends User {
 
     @Getter
     private List<Podcast> podcasts = new ArrayList<>();
     @Getter
     private List<Announcement> announcements = new ArrayList<>();
 
-    public Host(String username, int age, String city) {
+    public Host(final String username, final int age, final String city) {
         super(username, age, city);
-        super.setUserType(Enums.userType.HOST);
+        super.setUserType(Enums.UserType.HOST);
         super.setConnectionStatus(Enums.Connectivity.OFFLINE);
     }
 
+    @Override
+    public String accept(final Visitor visitor) {
+        return visitor.visit(this);
+    }
 
+    /**
+     * Checks if host can be deleted.
+     *
+     * @return True if yes, false otherwise
+     */
     @Override
     public boolean safeDelete() {
         if (this.getPageVisitors() != 0) {
@@ -41,30 +49,45 @@ public class Host extends User {
                 return false;
             }
             for (Episode episode : podcast.getEpisodes()) {
-                if (episode.getInteractions() != 0)
+                if (episode.getInteractions() != 0) {
                     return false;
+                }
             }
         }
         return true;
     }
 
-    public String removePodcast(CommandInput commandInput) {
-        String message = new String();
+    /**
+     * Removes podcast from host's podcast list, if it exists
+     *
+     * @param commandInput command containing podcast name
+     * @return command result message
+     */
+    public String removePodcast(final CommandInput commandInput) {
+        String message;
         Podcast oldPodcast = getPodcastByName(commandInput.getName());
+
         if (oldPodcast == null) {
             message = super.getUsername() + " doesn't have a podcast with the given name.";
             return message;
         }
+
         if (!safePodcast(oldPodcast)) {
             message = super.getUsername() + " can't delete this podcast.";
             return message;
         }
+
         podcasts.remove(oldPodcast);
         message = super.getUsername() + " deleted the podcast successfully.";
         return message;
     }
 
-    private boolean safePodcast(Podcast podcast) {
+    /**
+     * Checks if podcast can be deleted.
+     *
+     * @return True if yes, false otherwise
+     */
+    private boolean safePodcast(final Podcast podcast) {
         if (podcast.getInteractions() != 0) {
             return false;
         }
@@ -76,7 +99,13 @@ public class Host extends User {
         return true;
     }
 
-    public Podcast getPodcastByName(String name) {
+    /**
+     * Searches podcast by name.
+     *
+     * @param name name of the podcast to be searched
+     * @return podcast, if found
+     */
+    public Podcast getPodcastByName(final String name) {
         for (Podcast podcast : podcasts) {
             if (podcast.getName().equalsIgnoreCase(name)) {
                 return podcast;
@@ -85,8 +114,13 @@ public class Host extends User {
         return null;
     }
 
-    public String addAnnouncement(CommandInput commandInput) {
-        // Check if the artist has another merch with the same name
+    /**
+     * Adds announcement if there isn't one with the same name already.
+     *
+     * @param commandInput contains announcement info
+     * @return command result message
+     */
+    public String addAnnouncement(final CommandInput commandInput) {
         if (hasAnnouncemenetWithSameName(commandInput.getName())) {
             return this.getUsername() + " has already added an announcement with this name.";
         }
@@ -98,24 +132,26 @@ public class Host extends User {
         return this.getUsername() + " has successfully added new announcement.";
     }
 
-    public String removeAnnouncement(CommandInput commandInput) {
-        // Iterate through the announcements
+    /**
+     * Removes announcement, if it exists.
+     *
+     * @param commandInput command containing announcement name
+     * @return command result message
+     */
+    public String removeAnnouncement(final CommandInput commandInput) {
         Iterator<Announcement> iterator = announcements.iterator();
         while (iterator.hasNext()) {
             Announcement announcement = iterator.next();
-
-            // Check if the announcement has the same name
             if (announcement.getName().equals(commandInput.getName())) {
-                iterator.remove(); // Remove the announcement
+                iterator.remove();
                 return this.getUsername() + " has successfully deleted the announcement.";
             }
         }
 
-        // If no matching announcement is found
         return this.getUsername() + " has no announcement with the given name.";
     }
 
-    private boolean hasAnnouncemenetWithSameName(String announcementName) {
+    private boolean hasAnnouncemenetWithSameName(final String announcementName) {
         for (Announcement announcement : announcements) {
             if (announcement.getName().equals(announcementName)) {
                 return true;
@@ -124,6 +160,11 @@ public class Host extends User {
         return false;
     }
 
+    /**
+     * Prints host's podcast.
+     *
+     * @return the podcast list, as podcast output
+     */
     public ArrayList<PodcastOutput> showPodcasts() {
         ArrayList<PodcastOutput> podcastOutputs = new ArrayList<>();
         for (Podcast podcast : podcasts) {
@@ -132,20 +173,26 @@ public class Host extends User {
         return podcastOutputs;
     }
 
-    public String addPodcast(CommandInput commandInput) {
-        String message = new String();
-        // Checking if there's already an album with the same name.
+    /**
+     * Adds a new podcast, if it has a new name and no repeating episodes.
+     *
+     * @param commandInput command containing podcast info
+     * @return command result message
+     */
+    public String addPodcast(final CommandInput commandInput) {
+        String message;
         for (Podcast podcast : podcasts) {
             if (podcast.getName().equals(commandInput.getName())) {
                 message = super.getUsername() + " has another podcast with the same name.";
                 return message;
             }
         }
-        // Check if the songs appear twice or more.
+
         if (hasSameEpisode(commandInput.getEpisodes())) {
             message = super.getUsername() + " has the same episode in this podcast.";
             return message;
         }
+
         List<Episode> newEpisodes = new ArrayList<>();
         for (EpisodeInput episodeInput : commandInput.getEpisodes()) {
             Episode episode = new Episode(episodeInput.getName(), episodeInput.getDuration(),
@@ -159,14 +206,13 @@ public class Host extends User {
     }
 
     /**
-     * Function to help check if the same episode name appears twice. Works on the basis of sets
-     * having unique objects.
+     * Function to help check if the same episode name appears twice. Using set properties for
+     * unique items.
      *
      * @param episodes List of episodes to check
      * @return True if there are duplicates, false otherwise
      */
-    private boolean hasSameEpisode(List<EpisodeInput> episodes) {
-        // Use a Set to track unique song names
+    private boolean hasSameEpisode(final List<EpisodeInput> episodes) {
         Set<String> episodeNames = new HashSet<>();
 
         for (EpisodeInput episode : episodes) {

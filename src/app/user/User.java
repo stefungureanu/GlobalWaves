@@ -12,7 +12,7 @@ import app.player.PlayerStats;
 import app.searchBar.Filters;
 import app.searchBar.SearchBar;
 import app.utils.Enums;
-import app.utils.visitor.PrintPage;
+import app.utils.visitor.Visitable;
 import app.utils.visitor.Visitor;
 import fileio.input.CommandInput;
 import lombok.Getter;
@@ -27,7 +27,7 @@ import static app.utils.Enums.Connectivity.ONLINE;
 /**
  * The type User.
  */
-public class User {
+public class User implements Visitable {
     @Getter
     private String username;
     @Getter
@@ -47,16 +47,17 @@ public class User {
     @Getter
     @Setter
     private Enums.Connectivity connectionStatus = ONLINE;
-    // True for artists and hosts, false for normal users.
     @Getter
     @Setter
-    private Enums.userType userType = Enums.userType.NORMAL;
+    private Enums.UserType userType = Enums.UserType.NORMAL;
     @Getter
     @Setter
-    private Enums.pageSelection pageType = Enums.pageSelection.HOME;
+    private Enums.PageSelection pageType = Enums.PageSelection.HOME;
+    // For page selection (artist and host).
     @Getter
     @Setter
-    private User selectedUser = null;
+    private User selectedUser = this;
+    // Used by children.
     @Getter
     private Integer pageVisitors = 0;
 
@@ -80,14 +81,27 @@ public class User {
         lastSearchedUser = false;
     }
 
+    /**
+     * Increases page visitors. Used by children.
+     */
     protected void increasePageVisitors() {
         pageVisitors++;
     }
 
+    /**
+     * Decreases page visitors. Used by children.
+     */
     protected void decreasePageVisitors() {
         pageVisitors--;
     }
 
+    /**
+     * Visitor accept to print user page (either home or likedcontent).
+     */
+    @Override
+    public String accept(final Visitor visitor) {
+        return visitor.visit(this);
+    }
 
     /**
      * Search array list.
@@ -125,18 +139,15 @@ public class User {
      * @return The current page as string
      */
     public String printCurrentPage() {
-        Visitor currentPage = new PrintPage();
-        String message = new String();
+        String message;
+
         if (connectionStatus == OFFLINE) {
             message = username + "is offline.";
             return message;
         }
-        switch (pageType) {
-            case HOME -> message = currentPage.visit(this);
-            case LIKED -> message = currentPage.visit(this);
-            case ARTIST -> message = currentPage.visit((Artist) selectedUser);
-            case HOST -> message = currentPage.visit((Host) selectedUser);
-        }
+
+        message = selectedUser.accept(Admin.getPageVisitor());
+
         return message;
     }
 
@@ -147,16 +158,18 @@ public class User {
      */
     public String changePage(final CommandInput commandInput) {
         String message = username + " accessed " + commandInput.getNextPage() + " successfully.";
-        if (selectedUser != null)
+        // "Withdraw" from old page.
+        if (selectedUser != null) {
             selectedUser.decreasePageVisitors();
+        }
         switch (commandInput.getNextPage()) {
             case "Home":
-                pageType = Enums.pageSelection.HOME;
-                selectedUser = null;
+                pageType = Enums.PageSelection.HOME;
+                selectedUser = this;
                 break;
             case "LikedContent":
-                pageType = Enums.pageSelection.LIKED;
-                selectedUser = null;
+                pageType = Enums.PageSelection.LIKED;
+                selectedUser = this;
                 break;
             default:
                 message = username + " is trying to access a non-existent page.";
@@ -172,7 +185,7 @@ public class User {
      * @return the string
      */
     public String select(final int itemNumber) {
-        String message = new String();
+        String message;
         if (!lastSearchedUser) {
             message = selectMedia(itemNumber);
         } else {
@@ -189,15 +202,16 @@ public class User {
         selectedUser = searchBar.selectUser(itemNumber);
 
         if (selectedUser == null) {
+            selectedUser = this;
             return "The selected ID is too high.";
         }
 
         selectedUser.increasePageVisitors();
 
-        if (selectedUser.getUserType().equals(Enums.userType.ARTIST)) {
-            pageType = Enums.pageSelection.ARTIST;
+        if (selectedUser.getUserType().equals(Enums.UserType.ARTIST)) {
+            pageType = Enums.PageSelection.ARTIST;
         } else {
-            pageType = Enums.pageSelection.HOST;
+            pageType = Enums.PageSelection.HOST;
         }
         return "Successfully selected %s".formatted(selectedUser.getUsername()) + "'s page.";
     }
@@ -246,7 +260,7 @@ public class User {
      * @return the string
      */
     public String switchStatus() {
-        if (!userType.equals(Enums.userType.NORMAL)) {
+        if (!userType.equals(Enums.UserType.NORMAL)) {
             return username + " is not a normal user.";
         }
 
@@ -395,10 +409,8 @@ public class User {
         if (likedSongs.contains(song)) {
             likedSongs.remove(song);
             song.dislike();
-            System.out.println("DISLIKED -1" + song.getName());
             return "Unlike registered successfully.";
         }
-        System.out.println("LIKED -1" + song.getName());
 
         likedSongs.add(song);
         song.like();
@@ -631,36 +643,52 @@ public class User {
      */
     public boolean safeDelete() {
         for (Playlist playlist : playlists) {
-            if (playlist.getInteractions() != 0)
+            if (playlist.getInteractions() != 0) {
                 return false;
+            }
         }
         return true;
     }
 
+    /**
+     * Removes all songs from the user's liked song list in preparation for deletion.
+     */
     public void dislikeAll() {
         for (Song song : likedSongs) {
             song.dislike();
         }
     }
 
+    /**
+     * Removes all playlists from the user's followed playlist in preparation for deletion.
+     */
     public void unfollowAll() {
         for (Playlist playlist : followedPlaylists) {
             playlist.decreaseFollowers();
         }
     }
 
+    /**
+     * Removes all playlists created by the user from other user's followed playlist in preparation
+     * for deletion.
+     */
     public void removePlaylists() {
         for (User user : Admin.getNormalUsers()) {
             if (!user.getUsername().equals(this.username)) {
-                // Get the user's followed playlists
                 ArrayList<Playlist> userFollowedPlaylists = user.getFollowedPlaylists();
-                // Iterate through the followed playlists and remove the ones created by the current user (this)
-                userFollowedPlaylists.removeIf(playlist -> playlist.getOwner().equals(this.getUsername()));
+                userFollowedPlaylists.removeIf(playlist ->
+                        playlist.getOwner().equals(this.getUsername()));
             }
         }
     }
 
-    public boolean usingSong(AudioFile audioFile) {
+    /**
+     * Checks if the user is using the specified audio file.
+     *
+     * @param audioFile audio to check in user's player
+     * @return True if used, false otherwise
+     */
+    public boolean usingSong(final AudioFile audioFile) {
         if (player != null) {
             return player.checkUsage(audioFile);
         } else {

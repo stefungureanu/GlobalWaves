@@ -2,7 +2,6 @@ package app.player;
 
 import app.audio.Collections.AudioCollection;
 import app.audio.Files.AudioFile;
-import app.audio.Files.Song;
 import app.audio.LibraryEntry;
 import app.utils.Enums;
 import lombok.Getter;
@@ -43,7 +42,7 @@ public final class Player {
 
         repeatMode = Enums.RepeatMode.NO_REPEAT;
         paused = true;
-        // Remove user interaction with ongoing audio.
+        // Remove user interaction with ongoing audio, if there is any left.
         if (source != null) {
             source.getAudioFile().decreaseInteraction();
             if (source.getAudioCollection() != null) {
@@ -108,6 +107,7 @@ public final class Player {
             bookmarkPodcast();
         }
 
+        // Decreasing interaction for old source, if there is any.
         if (source != null) {
             if (source.getAudioFile() != null) {
                 source.getAudioFile().decreaseInteraction();
@@ -290,7 +290,13 @@ public final class Player {
         return new PlayerStats(filename, duration, repeatMode, shuffle, paused);
     }
 
-    public boolean checkUsage(AudioFile audioFile) {
+    /**
+     * Checks if given file is used by the current player.
+     *
+     * @param audioFile audio file to be checked
+     * @return True if used, false otherwise
+     */
+    public boolean checkUsage(final AudioFile audioFile) {
         if (source != null) {
             return source.checkUsage(audioFile);
         } else {
