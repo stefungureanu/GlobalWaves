@@ -26,7 +26,7 @@ public final class Artist extends User {
     @Getter
     private List<Merch> merch = new ArrayList<>();
 
-    // Enum for "magic number" errors.
+    // Enum for "magic number" errors. Begin and end are for the date string indexes.
     public enum DateConstants {
         MIN_YEAR(1999),
         MAX_YEAR(2023),
@@ -157,21 +157,23 @@ public final class Artist extends User {
             return false;
         }
 
-        if (day < 1 || day > daysByMonths(month)) {
-            return false;
+        if (day < 1) {
+            return  false;
+        }
+
+        // Differing month case.
+        if (month == DateConstants.FEBRUARY.getValue()) {
+            if (day > DateConstants.FEBRUARY_DAYS.getValue()) {
+                return false;
+            }
+        } else {
+            if (day > DateConstants.NORMAL_MONTH.getValue()) {
+                return false;
+            }
         }
 
         return true;
 
-    }
-
-    private int daysByMonths(final int month) {
-        // Feb.
-        if (month == DateConstants.FEBRUARY.getValue()) {
-            return DateConstants.FEBRUARY_DAYS.getValue();
-        } else {
-            return DateConstants.NORMAL_MONTH.getValue();
-        }
     }
 
     /**
@@ -183,10 +185,10 @@ public final class Artist extends User {
     public String removeAlbum(final CommandInput commandInput) {
         String message;
         Playlist oldAlbum = getAlbumByName(commandInput.getName());
-            if (oldAlbum == null) {
-                message = super.getUsername() + " doesn't have an album with the given name.";
-                return message;
-            }
+        if (oldAlbum == null) {
+            message = super.getUsername() + " doesn't have an album with the given name.";
+            return message;
+        }
         if (!safeAlbum(oldAlbum)) {
             message = super.getUsername() + " can't delete this album.";
             return message;
@@ -223,10 +225,9 @@ public final class Artist extends User {
                     songInput.getTags(), songInput.getLyrics(), songInput.getGenre(),
                     songInput.getReleaseYear(), songInput.getArtist());
             newAlbum.addSong(song);
+            // Also add to library.
             Admin.addSong(song);
         }
-
-
 
         albums.add(newAlbum);
         message = super.getUsername() + " has added new album successfully.";

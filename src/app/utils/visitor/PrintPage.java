@@ -123,7 +123,7 @@ public final class PrintPage implements Visitor {
     @Override
     public String visit(final User user) {
         if (user.getPageType() == Enums.PageSelection.HOME) {
-            // Up to 5 of each.
+            // Up to 5 of each. Home page.
             StringBuilder page = new StringBuilder("Liked songs:\n\t[");
             page.append(getLikedSongsNames(user));
             page.append("]\n\nFollowed playlists:\n\t[");
@@ -149,21 +149,16 @@ public final class PrintPage implements Visitor {
 
         StringBuilder songsNames = new StringBuilder();
         int count = 0;
-
         for (Song song : sortedSongs) {
             if (count >= MAX_RESULTS) {
                 break;
             }
-
             songsNames.append(song.getName());
-
             if (count < MAX_RESULTS - 1 && count < sortedSongs.size() - 1) {
                 songsNames.append(", ");
             }
-
             count++;
         }
-
         return songsNames.toString();
     }
 

@@ -16,9 +16,7 @@ import fileio.input.UserInput;
 import fileio.input.PodcastInput;
 import lombok.Getter;
 
-import java.util.Map;
 import java.util.List;
-import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -33,6 +31,7 @@ public final class Admin {
     @Getter
     private static int timestamp = 0;
     private static final int LIMIT = 5;
+    // Visitor object used for page.
     @Getter
     private static PrintPage pageVisitor = new PrintPage();
 
@@ -91,6 +90,7 @@ public final class Admin {
             case HOST:
                 if (user.safeDelete()) {
                     deleted = true;
+                    // Doesn't really need data removal since the bookmarks won't be used again.
                     users.remove(user);
                 }
                 break;
@@ -267,10 +267,6 @@ public final class Admin {
         for (User user : users) {
             if (user.getUserType().equals(Enums.UserType.ARTIST)) {
                 artists.add(user);
-                if (user.getUsername().equals("amanda16"))
-                    System.out.println("ajaja");
-                if (user.getUsername().equals("leslie27"))
-                    System.out.println("AVFAJFJ");
             }
         }
         return artists;
@@ -297,14 +293,12 @@ public final class Admin {
      */
     public static List<String> getTop5Songs() {
         List<Song> sortedSongs = new ArrayList<>(songs);
-
-        // Sort by likes in descending order
         sortedSongs.sort(Comparator.comparingInt(Song::getLikes).reversed());
 
         List<String> topSongs = new ArrayList<>();
+
         int count = 0;
 
-        // Add top songs to the result list
         for (Song song : sortedSongs) {
             if (count >= LIMIT) {
                 break;
@@ -326,8 +320,11 @@ public final class Admin {
         sortedPlaylists.sort(Comparator.comparingInt(Playlist::getFollowers)
                 .reversed()
                 .thenComparing(Playlist::getTimestamp, Comparator.naturalOrder()));
+
         List<String> topPlaylists = new ArrayList<>();
+
         int count = 0;
+
         for (Playlist playlist : sortedPlaylists) {
             if (count >= LIMIT) {
                 break;
@@ -335,6 +332,7 @@ public final class Admin {
             topPlaylists.add(playlist.getName());
             count++;
         }
+
         return topPlaylists;
     }
 
@@ -344,10 +342,10 @@ public final class Admin {
      * @return the top 5 playlists
      */
     public static List<String> getTop5Artists() {
-        List<User> users = getArtists();
+        List<User> artists = getArtists();
         List<Artist> sortedArtists = new ArrayList<>();
         // Workaround because the getArtists method returns users.
-        for (User user : users) {
+        for (User user : artists) {
                 sortedArtists.add((Artist) user);
         }
 
@@ -371,29 +369,25 @@ public final class Admin {
      * @return the top 5 albums
      */
     public static List<String> getTop5Albums() {
-        // TO DO
-        List<Playlist> allAlbums = getAlbums();
-        Map<Playlist, Integer> albumLikesMap = new HashMap<>();
-
-        // Calculate total likes for each album
-        for (Playlist album : allAlbums) {
-            int totalLikes = album.getSongs().stream().mapToInt(Song::getLikes).sum();
-            albumLikesMap.put(album, totalLikes);
-        }
-
-        // Sort albums by likes (descending), then by name (ascending) for tiebreakers
-        List<Playlist> sortedAlbums = allAlbums.stream()
-                .sorted(
-                        Comparator.<Playlist, Integer>comparing(albumLikesMap::get).reversed()
-                                .thenComparing(Comparator.comparing(Playlist::getName))
+        List<Playlist> sortedAlbums = getAlbums().stream()
+                .sorted(Comparator.<Playlist, Integer>comparing(album ->
+                                album.getTotalLikes()).reversed()
+                                .thenComparing(Playlist::getName)
                 )
+                .limit(LIMIT)
                 .collect(Collectors.toList());
 
-        // Return the names of the top albums
-        return sortedAlbums.stream()
-                .limit(LIMIT)
-                .map(Playlist::getName)
-                .collect(Collectors.toList());
+        List<String> topAlbums = new ArrayList<>();
+        int count = 0;
+        for (Playlist album : sortedAlbums) {
+            if (count >= LIMIT) {
+                break;
+            }
+            topAlbums.add(album.getName());
+            count++;
+        }
+        return topAlbums;
+
     }
 
     /**

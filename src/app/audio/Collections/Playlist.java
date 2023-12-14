@@ -135,4 +135,17 @@ public final class Playlist extends AudioCollection {
             return count == Integer.parseInt(query);
         }
     }
+
+    /**
+     * Calculates total number of likes in playlist.
+     *
+     * @return the number of likes
+     */
+    public int getTotalLikes() {
+        int likes = 0;
+        for (Song song : songs) {
+            likes += song.getLikes();
+        }
+        return likes;
+    }
 }

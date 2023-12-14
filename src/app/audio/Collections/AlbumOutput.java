@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.ArrayList;
 
 @Getter
-public class AlbumOutput {
+public final class AlbumOutput {
     private final String name;
     private final ArrayList<String> songs;
 
