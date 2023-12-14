@@ -77,29 +77,23 @@ public final class PrintPage implements Visitor {
 
     private String getPodcastDetails(final Host host) {
         StringBuilder podcastDetails = new StringBuilder();
-        int count = 0;
         for (Podcast podcast : host.getPodcasts()) {
-            if (count > 0) {
+            podcastDetails.append(podcast.getName()).append(":\n\t[")
+                    .append(getEpisodeDetails(podcast.getEpisodes()));
+            if (host.getPodcasts().indexOf(podcast) < host.getPodcasts().size() - 1) {
                 podcastDetails.append(", ");
             }
-            podcastDetails.append(podcast.getName()).append(":\n\t[");
-
-            podcastDetails.append(getEpisodeDetails(podcast.getEpisodes()));
-
-            count++;
         }
         return podcastDetails.toString();
     }
 
     private String getEpisodeDetails(final List<Episode> episodes) {
         StringBuilder episodeDetails = new StringBuilder();
-        int count = 0;
         for (Episode episode : episodes) {
-            if (count > 0) {
+            episodeDetails.append(episode.getName()).append(" - ").append(episode.getDescription());
+            if (episodes.indexOf(episode) < episodes.size() - 1) {
                 episodeDetails.append(", ");
             }
-            episodeDetails.append(episode.getName()).append(" - ").append(episode.getDescription());
-            count++;
         }
         episodeDetails.append("]\n");
         return episodeDetails.toString();
@@ -107,14 +101,13 @@ public final class PrintPage implements Visitor {
 
     private String getAnnouncementDetails(final Host host) {
         StringBuilder announcementDetails = new StringBuilder();
-        int count = 0;
         for (Announcement announcement : host.getAnnouncements()) {
-            if (count > 0) {
-                announcementDetails.append(", ");
-            }
             announcementDetails.append(announcement.getName()).append(":\n\t")
                     .append(announcement.getDescription()).append("\n");
-            count++;
+            if (host.getAnnouncements().indexOf(announcement)
+                    < host.getAnnouncements().size() - 1) {
+                announcementDetails.append(", ");
+            }
         }
         return announcementDetails.toString();
     }
@@ -163,7 +156,9 @@ public final class PrintPage implements Visitor {
     }
 
     private String getFollowedPlaylistsNames(final User user) {
+        // I tried sorting them using the getTotalLikes in playlist but they don't match the ref.
         StringBuilder playlistsNames = new StringBuilder();
+
         int count = 0;
         for (Playlist playlist : user.getFollowedPlaylists()) {
             if (count >= MAX_RESULTS) {
@@ -180,26 +175,23 @@ public final class PrintPage implements Visitor {
 
     private String getLikedSongsDetails(final User user) {
         StringBuilder songsDetails = new StringBuilder();
-        int count = 0;
         for (Song song : user.getLikedSongs()) {
             songsDetails.append(song.getName()).append(" - ").append(song.getArtist());
-            if (count < user.getLikedSongs().size() - 1) {
+            if (user.getLikedSongs().indexOf(song) < user.getLikedSongs().size() - 1) {
                 songsDetails.append(", ");
             }
-            count++;
         }
         return songsDetails.toString();
     }
 
     private String getFollowedPlaylistsDetails(final User user) {
         StringBuilder playlistsDetails = new StringBuilder();
-        int count = 0;
         for (Playlist playlist : user.getFollowedPlaylists()) {
             playlistsDetails.append(playlist.getName()).append(" - ").append(playlist.getOwner());
-            if (count < user.getFollowedPlaylists().size() - 1) {
+            if (user.getFollowedPlaylists().indexOf(playlist)
+                    < user.getFollowedPlaylists().size() - 1) {
                 playlistsDetails.append(", ");
             }
-            count++;
         }
         return playlistsDetails.toString();
     }
