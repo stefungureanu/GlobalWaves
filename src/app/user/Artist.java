@@ -223,9 +223,10 @@ public final class Artist extends User {
                     songInput.getTags(), songInput.getLyrics(), songInput.getGenre(),
                     songInput.getReleaseYear(), songInput.getArtist());
             newAlbum.addSong(song);
+            Admin.addSong(song);
         }
 
-        
+
 
         albums.add(newAlbum);
         message = super.getUsername() + " has added new album successfully.";
@@ -365,6 +366,17 @@ public final class Artist extends User {
     }
 
     /**
+     * Remove artist's songs from library.
+     */
+    public void removeSongs() {
+        for (Playlist album : albums) {
+            for (Song song : album.getSongs()) {
+                Admin.removeSong(song);
+            }
+        }
+    }
+
+    /**
      * Finds album by name in artist's albums.
      *
      * @param name of the searched album
@@ -419,6 +431,9 @@ public final class Artist extends User {
      */
     public void deleteAlbum(final Playlist album) {
         albums.remove(album);
+        for (Song song : album.getSongs()) {
+            Admin.removeSong(song);
+        }
         // Remove the album from all users' liked songs and followed playlists
         for (User user : Admin.getNormalUsers()) {
             // Remove liked songs from the deleted album.

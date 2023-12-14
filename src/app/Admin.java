@@ -107,6 +107,7 @@ public final class Admin {
         artist.removeLikes();
         artist.removeFollows();
         artist.removePlaylistAdds();
+        artist.removeSongs();
     }
 
     // Removal for normal user.
@@ -140,6 +141,24 @@ public final class Admin {
                     songInput.getTags(), songInput.getLyrics(), songInput.getGenre(),
                     songInput.getReleaseYear(), songInput.getArtist()));
         }
+    }
+
+    /**
+     * Adds song.
+     *
+     * @param song the song to be added.
+     */
+    public static void addSong(final Song song) {
+        songs.add(song);
+    }
+
+    /**
+     * Remove song.
+     *
+     * @param song the song to be removed.
+     */
+    public static void removeSong(final Song song) {
+        songs.remove(song);
     }
 
 
@@ -279,24 +298,8 @@ public final class Admin {
     public static List<String> getTop5Songs() {
         List<Song> sortedSongs = new ArrayList<>(songs);
 
-        // Add songs from albums
-        for (Playlist album : Admin.getAlbums()) {
-            for (Song song : album.getSongs()) {
-                sortedSongs.add(song);
-                if (song.getName().equals("Luminescence Crescendo")) {
-                    System.out.println("kobe");
-                }
-                if (song.getName().equals("Night Utopia")) {
-                    System.out.println("aaaa");
-                }
-            }
-        }
-
-        // Sort by likes (descending), then by original order
-        sortedSongs.sort(
-                Comparator.<Song, Integer>comparing(Song::getLikes).reversed()
-                        .thenComparing(Comparator.comparingInt(sortedSongs::indexOf))
-        );
+        // Sort by likes in descending order
+        sortedSongs.sort(Comparator.comparingInt(Song::getLikes).reversed());
 
         List<String> topSongs = new ArrayList<>();
         int count = 0;

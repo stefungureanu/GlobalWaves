@@ -26046,7 +26046,7 @@
 }, {
   "command" : "getTop5Songs",
   "timestamp" : 14849,
-  "result" : [ "Utopia Harmony", "Celestial Soul", "Ethereal Rapture", "Whirlwind Whirlwind", "Luminescence Crescendo" ]
+  "result" : [ "Utopia Harmony", "Celestial Soul", "Ethereal Rapture", "Whirlwind Whirlwind", "Night Utopia" ]
 }, {
   "command" : "getTop5Albums",
   "timestamp" : 14849,

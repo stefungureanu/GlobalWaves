@@ -1,6 +1,8 @@
 Starting audit...
-[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\Admin.java:251:17: 'if' construct must use '{}'s. [NeedBraces]
-[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\Admin.java:253:17: 'if' construct must use '{}'s. [NeedBraces]
-[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\Admin.java:344:20: 'users' hides a field. [HiddenField]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\Admin.java:270:17: 'if' construct must use '{}'s. [NeedBraces]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\Admin.java:272:17: 'if' construct must use '{}'s. [NeedBraces]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\Admin.java:347:20: 'users' hides a field. [HiddenField]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\searchBar\SearchBar.java:5:8: Unused import - app.audio.Collections.Playlist. [UnusedImports]
+[ERROR] C:\Users\Stefan\IdeaProjects\TEMA2\oop-project-2023-main\etapa2\.\src\app\searchBar\SearchBar.java:7:8: Unused import - app.audio.Files.Song. [UnusedImports]
 Audit done.
-Checkstyle ends with 3 errors.
+Checkstyle ends with 5 errors.
