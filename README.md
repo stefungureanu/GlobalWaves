@@ -1,9 +1,8 @@
-# GlobalWaves - Etapa 2
-## UNGUREANU STEFAN 321CAa
+# GlobalWaves
 
 ### Overview
 
-This repository contains the codebase for GlobalWaves - Etapa 2, a media management system similar to Spotify, implemented in Java.
+This repository contains the codebase for GlobalWaves, a media management system similar to Spotify, implemented in Java.
 
 ### Main Components
 - **Admin.java**
@@ -48,8 +47,6 @@ This repository contains the codebase for GlobalWaves - Etapa 2, a media managem
 - **PrintPage.java**
 - **Visitable.java**
 - **Visitor.java**
-
-**Note:** The code is built on the given code template ("schelet").
 
 ### Updated Classes
 
